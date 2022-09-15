@@ -67,7 +67,7 @@ export const Header = () => {
             textWeight: "black",
             fontStyle: "italic",
             fontSize: ".8rem",
-            width: "6rem",
+            width: "7rem",
             paddingLeft: "1rem",
           }}
         >

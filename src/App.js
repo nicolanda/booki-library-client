@@ -1,23 +1,28 @@
-import { Header } from "./components/Header/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CssBaseline } from "@mui/material";
+// import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
-import { NotFoundPage } from "./pages/NotFoundPage";
+// import { Navbar } from "./components/navbar/Navbar";
 import { Home } from "./pages/Home";
-import { Navbar } from "./components/navbar/Navbar";
+import { NotFoundPage } from "./pages/NotFoundPage";
 import { Login } from "./components/users/login/Login";
-import { RegisterForm } from "./components/users/register/RegisterForm";
+import { RegisterPage } from "./pages/RegisterPage";
 
 function App() {
   return (
     <BrowserRouter>
       <CssBaseline />
-      <Header />
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/user/login" element={<Login />} />
-        <Route path="/user/register" element={<RegisterForm />} />
+        {/* default route */}
+        <Route path="/" element={<Home />}>
+          <Route index element={<div>hello nico</div>} />
+          <Route index element={<div>hellow sebas</div>} />
+          <Route path="/libros" element={<div>Book</div>} />
+        </Route>
+        <Route path="user" element="" />
+        <Route path="login" element={<Login />} />
+        <Route path="user/register" element={<RegisterPage />} />
+        <Route />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
@@ -26,3 +31,12 @@ function App() {
 }
 
 export default App;
+
+
+// url/
+//  / = index
+// Home = 
+
+// <header></header>
+// <div>Book</div>
+// <footer></footer>
