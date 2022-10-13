@@ -1,4 +1,4 @@
-import { Container } from "@mui/material"
+import { Container } from "@mui/material";
 
 export const Login = () => {
   return (
@@ -10,5 +10,5 @@ export const Login = () => {
         <p> hola </p>
       </Container>
     </div>
-  )
-}
+  );
+};
