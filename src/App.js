@@ -7,18 +7,31 @@ import { Home } from "./pages/Home";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { Login } from "./components/users/login/Login";
 import { RegisterPage } from "./pages/RegisterPage";
+import { useEffect, useState } from "react";
+import { getAllBooks } from "./services/getAllBooks/getAllBooks";
+import { ProductPage } from "./pages/ProductPage";
 
 function App() {
+  const [infoCard, setInfoCard] = useState({});
+
+  useEffect(() => {
+    getAllBooks().then((data) => {
+      setInfoCard(data);
+    });
+  }, []);
+
+  const { books } = infoCard;
+
   return (
     <BrowserRouter>
       <CssBaseline />
+         
       <Routes>
         {/* default route */}
-        <Route path="/" element={<Home />}>
-          <Route index element={<div>hello nico</div>} />
-          <Route index element={<div>hellow sebas</div>} />
-          <Route path="/libros" element={<div>Book</div>} />
+        <Route path="/" element={<Home infobook={books} />}>
         </Route>
+        <Route path="/categoria/libros" element={<div>dedede</div>} />
+        <Route path="/categoria/libros/:isbn" element={<ProductPage />}/>
         <Route path="user" element="" />
         <Route path="login" element={<Login />} />
         <Route path="user/register" element={<RegisterPage />} />
@@ -31,12 +44,3 @@ function App() {
 }
 
 export default App;
-
-
-// url/
-//  / = index
-// Home = 
-
-// <header></header>
-// <div>Book</div>
-// <footer></footer>
