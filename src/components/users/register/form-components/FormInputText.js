@@ -1,5 +1,3 @@
 export const FormInputText = () => {
-  return (
-    <div>FormInputText</div>
-  )
-}
+  return <div>FormInputText</div>;
+};

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Header } from "../components/Header/Header";
-import { getInfoBook } from "../services/getAllBooks/getAllBooks";
-import "./productPage.css";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Header } from '../components/Header/Header';
+import { getInfoBook } from '../services/getAllBooks/getAllBooks';
+import './productPage.css';
 
 export const ProductPage = () => {
   let { isbn } = useParams();
@@ -24,7 +24,7 @@ export const ProductPage = () => {
     price,
     publisher,
     title,
-    year,
+    year
   } = infoBook;
 
   console.log(infoBook);
