@@ -1,82 +1,63 @@
-import { Button, TextField } from '@mui/material';
-import './registerFrom.css';
+import { Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import { FormInputText } from '../../forms/FormInputText';
+import './registerFrom.css';
+import { useState } from 'react';
 
 export const RegisterForm = () => {
-  const intialValues = {
-    name: '',
-    email: '',
-    password: '',
-    telephone: '',
-    confirmPassword: '',
-    documentType: '',
-    documentNumber: ''
+  const [name, setName] = useState({ field: '', valid: null });
+  const [password, setPassword] = useState({
+    field: '',
+    valid: null
+  });
+
+  const regularExpression = {
+    name: /^[a-zA-ZÀ-ÿ\s]{4,40}$/ // letter, space and acent
   };
 
-  console.log(intialValues);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(e);
+  };
+
   return (
     <div className="form-container">
       <div className="title-form">
         <h2>Registro</h2>
       </div>
-      <form className="body-form">
-        <TextField
-          id="name"
-          label="name"
-          variant="outlined"
-          size="small"
-          style={{ width: '80%' }}
-        />
+      <div>
+        <form onSubmit={handleSubmit} className="body-form">
+          <FormInputText
+            state={name}
+            setState={setName}
+            id="name"
+            label="Nombre completo"
+            variant="outlined"
+            size="small"
+            reg={regularExpression.name}
+            tam="60%"
+          />
 
-        <TextField
-          id="email"
-          label="correo"
-          variant="outlined"
-          size="small"
-          style={{ width: '80%' }}
-        />
+          {/* <FormInputText
+            id="password"
+            type="password"
+            label="password"
+            variant="outlined"
+            size="small"
+            tam="60%"
+          /> */}
 
-        <div>
-          <label>Contraseña</label>
-        </div>
-        <div>
-          <label>Confirmar contraseña</label>
-        </div>
-
-        <TextField
-          id="telephone"
-          label="telefono"
-          variant="outlined"
-          size="small"
-          style={{ width: '80%' }}
-        />
-
-        <TextField
-          id="documentType"
-          label="tipo de documento"
-          variant="outlined"
-          size="small"
-          style={{ width: '80%' }}
-        />
-
-        <TextField
-          id="documentType"
-          label="tipo de documento"
-          variant="outlined"
-          size="small"
-          style={{ width: '80%' }}
-        />
-
-        <div className="button-form">
-          <Button
-            aria-label="send"
-            variant="contained"
-            type="submit"
-            endIcon={<SendIcon />}>
-            Enviar
-          </Button>
-        </div>
-      </form>
+          <div className="button-form">
+            <Button
+              aria-label="send"
+              variant="contained"
+              type="submit"
+              endIcon={<SendIcon />}>
+              Enviar
+            </Button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
