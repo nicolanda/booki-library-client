@@ -56,7 +56,9 @@ export const Footer = () => {
           style={{
             paddingTop: '1rem'
           }}>
-          <Typography>© 2022 Nicolas Landazabal, derechos reservados.</Typography>
+          <Typography>
+            © 2022 Nicolas Landazabal, derechos reservados.
+          </Typography>
         </div>
       </div>
     </div>

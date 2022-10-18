@@ -57,7 +57,9 @@ export const HeaderReg = () => {
             fontSize: '.8rem',
             width: '7rem'
           }}>
-          <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+          <Link
+            to="/"
+            style={{ textDecoration: 'none', color: 'white' }}>
             <h1>Libreria Booki</h1>
           </Link>
         </div>
