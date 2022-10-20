@@ -11,6 +11,7 @@ export const FormInputText = ({
   reg,
   txtError,
   tam,
+  helperText,
   confirmPass
 }) => {
   const onChange = (e) => {
@@ -20,9 +21,9 @@ export const FormInputText = ({
   const validation = () => {
     if (reg) {
       if (reg.test(state.field)) {
-        setState({ ...state, valid: !1 });
+        setState({ ...state, err: !1 });
       } else {
-        setState({ ...state, valid: !0 });
+        setState({ ...state, err: !0 });
       }
     }
     if (confirmPass) confirmPass();
@@ -32,8 +33,8 @@ export const FormInputText = ({
     <TextField
       id={id}
       value={state.field}
-      error={state.valid}
-      helperText={state.valid ? txtError : ''}
+      error={state.err}
+      helperText={state.err ? txtError : helperText}
       type={type}
       label={label}
       variant={variant}
@@ -42,6 +43,7 @@ export const FormInputText = ({
       onChange={onChange}
       onKeyUp={validation}
       onBlur={validation}
+      required
     />
   );
 };

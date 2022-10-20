@@ -5,12 +5,12 @@ import { Footer } from './components/Footer/Footer';
 // import { Navbar } from "./components/navbar/Navbar";
 import { Home } from './pages/Home';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { Login } from './components/users/login/Login';
+
 import { RegisterPage } from './pages/RegisterPage';
 import { useEffect, useState } from 'react';
 import { getAllBooks } from './services/getAllBooks/getAllBooks';
 import { ProductPage } from './pages/ProductPage';
-import axios from 'axios';
+import { LoginPage } from './pages/LoginPage';
 
 function App() {
   const [infoCard, setInfoCard] = useState({});
@@ -22,20 +22,6 @@ function App() {
   }, []);
 
   const { books } = infoCard;
-
-  const getidentificationType = async () => {
-    try {
-      const result = await axios.get(
-        'http://localhost:5000/api/identificationType'
-      );
-      console.log(result.data);
-      return result.data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  getidentificationType();
 
   return (
     <BrowserRouter>
@@ -50,7 +36,7 @@ function App() {
           element={<ProductPage />}
         />
         <Route path="user" element="" />
-        <Route path="login" element={<Login />} />
+        <Route path="user/login" element={<LoginPage />} />
         <Route path="user/register" element={<RegisterPage />} />
         <Route />
         <Route path="*" element={<NotFoundPage />} />
