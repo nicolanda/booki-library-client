@@ -1,4 +1,5 @@
-import { Header } from '../components/Header/Header';
+import React from 'react';
+import { Header } from '../components/header/Header';
 import { Navbar } from '../components/navbar/Navbar';
 import { BookCard } from '../components/card/BookCard';
 import { uniquePositions } from '../utilities/uniquePositions';
@@ -6,7 +7,7 @@ import './home.css';
 
 export const Home = ({ infobook }) => {
   return (
-    <>
+    <div>
       <Header />
       <Navbar />
       <div>
@@ -24,13 +25,13 @@ export const Home = ({ infobook }) => {
           <div className="recommended-card-container">
             <div className="all-cards">
               {infobook &&
-                uniquePositions(infobook, 3)?.map((book) => (
+                uniquePositions(infobook, 3).map((book) => (
                   <BookCard key={book.isbn13} {...book} />
                 ))}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };

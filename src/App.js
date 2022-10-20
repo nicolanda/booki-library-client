@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
 // import { Header } from "./components/Header/Header";
-import { Footer } from './components/Footer/Footer';
+import { Footer } from './components/footer/Footer';
 // import { Navbar } from "./components/navbar/Navbar";
 import { Home } from './pages/Home';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import { getAllBooks } from './services/getAllBooks/getAllBooks';
 import { ProductPage } from './pages/ProductPage';
 import { LoginPage } from './pages/LoginPage';
+import React from 'react';
 
 function App() {
   const [infoCard, setInfoCard] = useState({});

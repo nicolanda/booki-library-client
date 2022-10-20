@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { RegisterButton } from '../../buttons/RegisterButton';
 import { FormInputText } from '../../forms/FormInputText';
 /*

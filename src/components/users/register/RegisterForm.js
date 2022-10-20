@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { FormInputText } from '../../forms/FormInputText';
 import './registerFrom.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FormSelectDocumentType } from '../../forms/FormSelectDocumentType';
 
 export const RegisterForm = () => {

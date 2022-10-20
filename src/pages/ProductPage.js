@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Header } from '../components/Header/Header';
+import { Header } from '../components/header/Header';
 import { getInfoBook } from '../services/getAllBooks/getAllBooks';
 import './productPage.css';
 
@@ -29,7 +29,7 @@ export const ProductPage = () => {
 
   console.log(infoBook);
   return (
-    <>
+    <div>
       <Header />
       <div className="container">
         <div className="img-container">
@@ -61,6 +61,6 @@ export const ProductPage = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
