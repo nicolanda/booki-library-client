@@ -1,0 +1,51 @@
+.container {
+  width: 100%;
+  height: 73.8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.auxTitle {
+  margin-top: 1rem;
+}
+  
+
+.form {
+  width: 100%;
+  height: 40%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+
+.link {
+  color: rgba(0,0,0,.5);
+  text-decoration: none;
+}
+
+.link:hover{
+  color: black;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    height: 100vh;
+  }
+
+  .title {
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+}

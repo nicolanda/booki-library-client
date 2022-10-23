@@ -1,13 +1,20 @@
 import { Button } from '@mui/material';
 import React from 'react';
+import './RegisterButton.css';
 
 export const RegisterButton = (props) => {
-  const { type, variant, label } = props;
+  const { nameClass, type, variant, label } = props;
+
+  const typeButton = {
+    regButton: 'regButton'
+  };
+
   return (
-    <div>
-      <Button variant={variant} type={type}>
-        {label}
-      </Button>
-    </div>
+    <Button
+      className={typeButton[nameClass]}
+      variant={variant}
+      type={type}>
+      {label}
+    </Button>
   );
 };

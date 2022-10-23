@@ -1,0 +1,15 @@
+.regButton{
+  font-size: 1rem;
+  color: black;
+  border-color: black;
+  text-transform: none;
+  width: 200px;
+  height: 30px;
+  border-radius: 57px;
+}
+
+.regButton:hover{
+  border-color: black;
+  background-color: black;
+  color: white;
+}
