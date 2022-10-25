@@ -60,6 +60,10 @@ export const RegisterForm = () => {
     }
   };
 
+  /*
+   ? Insertar la peticion por api de datos
+  */
+
   const example = [
     {
       id: 1,

@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import React from 'react';
-import './RegisterButton.css';
+import './registerbutton.css';
 
 export const RegisterButton = (props) => {
   const { nameClass, type, variant, label } = props;

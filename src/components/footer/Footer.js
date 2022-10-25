@@ -57,7 +57,10 @@ export const Footer = () => {
           style={{
             paddingTop: '1rem'
           }}>
-          <Typography>
+          <Typography
+            sx={{
+              color: 'white'
+            }}>
             © 2022 Nicolas Landazabal, derechos reservados.
           </Typography>
         </div>

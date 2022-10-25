@@ -12,6 +12,11 @@ import { getAllBooks } from './services/getAllBooks/getAllBooks';
 import { ProductPage } from './pages/ProductPage';
 import { LoginPage } from './pages/LoginPage';
 import React from 'react';
+import { Dashboard } from './pages/Dashboard';
+import { AccountDashboard } from './components/users/dashboard/AccountDasboard';
+import { PaymentDashboard } from './components/users/dashboard/PaymentDashboard';
+import { AddressDashboard } from './components/users/dashboard/AddressDashboard';
+import { HistoryOrdersDashboard } from './components/users/dashboard/HistoryOrdersDashboard';
 
 function App() {
   const [infoCard, setInfoCard] = useState({});
@@ -39,7 +44,12 @@ function App() {
         <Route path="user" element="" />
         <Route path="user/login" element={<LoginPage />} />
         <Route path="user/register" element={<RegisterPage />} />
-        <Route />
+        <Route path="user/id/dashboard" element={<Dashboard />}>
+          <Route path="formUser" element={<AccountDashboard />} />
+          <Route path="payment" element={<PaymentDashboard />} />
+          <Route path="address" element={<AddressDashboard />} />
+          <Route path="orders" element={<HistoryOrdersDashboard />} />
+        </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
@@ -48,3 +58,7 @@ function App() {
 }
 
 export default App;
+
+/*
+ * Path: http://localhost:3000/user/id/dashboard
+ */

@@ -1,0 +1,26 @@
+.carduserContainer {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.carduserTitle {
+  font-weight: 800;
+}
+
+.carduserAuxtext {
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+  .carduserContainer{
+    justify-content: end;
+    margin-right: .3125rem;
+  }
+
+  .carduserTextcontainer{
+    padding: 0 .3125rem;
+  }
+}
