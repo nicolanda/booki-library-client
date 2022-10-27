@@ -1,0 +1,15 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  padding: .3125rem;
+  gap: .3125rem;
+}
+
+@media screen and (max-width: 768px) {
+
+  .menu {
+    flex-direction: row;
+    padding: 0 .5rem;
+    gap: .3125rem;
+  }
+}

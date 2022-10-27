@@ -1,8 +1,9 @@
+import { style } from '@mui/system';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RegisterButton } from '../../buttons/RegisterButton';
 import { FormInputText } from '../../forms/FormInputText';
-import './Login.css';
+import styles from './Login.module.css';
 /*
 ! realizar el manejo de errores
 ! realizar peticiones a la api
@@ -16,16 +17,16 @@ export const Login = () => {
     console.log(e);
   };
   return (
-    <div className="container">
-      <div className="text">
-        <div className="title">
+    <div className={styles.container}>
+      <div>
+        <div className={styles.title}>
           <h1>Iniciar sersión en la librería Booki</h1>
         </div>
-        <div className="auxTitle">
+        <div className={styles.auxTitle}>
           <p>Ingresa los tus datos en el siguiente formulario</p>
         </div>
       </div>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <FormInputText
           state={email}
           setState={setEmail}
@@ -52,7 +53,7 @@ export const Login = () => {
         />
       </form>
       <div>
-        <NavLink to="/user/forgot-password" className="link">
+        <NavLink to="/user/forgot-password" className={styles.link}>
           ¿Olvidaste tu contraseña?
         </NavLink>
       </div>

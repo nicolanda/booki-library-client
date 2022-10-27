@@ -1,4 +1,4 @@
-.card-container{
+.cardContainer{
   width: 100%;
   max-width: 200px;
   margin: 0.5rem;
@@ -8,39 +8,43 @@
 }
 
 
-.card-img{
+.cardImg{
   object-fit: contain;
   object-position: center;
   overflow: hidden;
   border-radius: 5px 5px 0 0;
 }
 
-.book-img{
+.bookImg{
   transform: scale(1.5);
 }
 
-.card-info > h4 {
+.cardInfo > h4 {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     padding: 0.4rem 0;
     font-size: 1rem;
 }
-.card-buttons{
+.cardButtons{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     padding: .5rem 0;
   }
 
-.author-book{
+.cardLink {
+  text-decoration: none;
+}
+
+.authorBook{
   text-align: center;
   font-style: italic;
   font-size: 0.9rem;
   color: gray;
 }
 
-.price-book {
+.priceBook {
   padding-right: .5rem;
   text-align: right;
   font-weight: bold;

@@ -1,29 +1,27 @@
+import styles from './Home.module.css';
 import React from 'react';
 import { Header } from '../components/header/Header';
-import { Navbar } from '../components/navbar/Navbar';
 import { BookCard } from '../components/card/BookCard';
 import { uniquePositions } from '../utilities/uniquePositions';
-import './home.css';
 
 export const Home = ({ infobook }) => {
   return (
     <div>
       <Header />
-      <Navbar />
       <div>
-        <div className="banner-container">
+        <div className={styles.container}>
           <img
-            className="home-banner"
+            className={styles.banner}
             src="images/banner-booki.jpg"
             alt="banner-library"
           />
         </div>
-        <div className="recommended">
-          <div className="recommended-title">
+        <div className={styles.recommended}>
+          <div className={styles.title}>
             <h2>Libros recomendados</h2>
           </div>
-          <div className="recommended-card-container">
-            <div className="all-cards">
+          <div className={styles.card}>
+            <div className={styles.cards}>
               {infobook &&
                 uniquePositions(infobook, 3).map((book) => (
                   <BookCard key={book.isbn13} {...book} />

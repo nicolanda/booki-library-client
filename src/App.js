@@ -1,11 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
-// import { Header } from "./components/Header/Header";
 import { Footer } from './components/footer/Footer';
-// import { Navbar } from "./components/navbar/Navbar";
 import { Home } from './pages/Home';
 import { NotFoundPage } from './pages/NotFoundPage';
-
 import { RegisterPage } from './pages/RegisterPage';
 import { useEffect, useState } from 'react';
 import { getAllBooks } from './services/getAllBooks/getAllBooks';
@@ -52,7 +49,6 @@ function App() {
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 }

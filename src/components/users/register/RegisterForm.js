@@ -1,9 +1,9 @@
 import { Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { FormInputText } from '../../forms/FormInputText';
-import './registerFrom.css';
 import React, { useState } from 'react';
 import { FormSelectDocumentType } from '../../forms/FormSelectDocumentType';
+import styles from './RegisterForm.module.css';
 
 export const RegisterForm = () => {
   const [name, setName] = useState({ field: '', err: null });
@@ -92,14 +92,14 @@ export const RegisterForm = () => {
   };
 
   return (
-    <div className="form-container">
-      <div className="title-form">
+    <div className={styles.containerForm}>
+      <div className={styles.titleForm}>
         <h2>Registro</h2>
       </div>
       <div>
         <p>Todos los campos son obligatorios.</p>
       </div>
-      <form onSubmit={handleSubmit} className="bodyForm">
+      <form onSubmit={handleSubmit} className={styles.bodyForm}>
         <FormInputText
           state={name}
           setState={setName}

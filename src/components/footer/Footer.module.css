@@ -1,0 +1,16 @@
+/* ? fo -> footer*/
+
+.foContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #776d6d;
+  padding: 1rem;
+}
+
+.foContainerIcons {
+  display: flex;
+  justify-content: space-between;
+  width: 12rem;
+}

@@ -1,0 +1,8 @@
+ /* ? nvu->navbaruser*/
+.nvuButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  background-color: #232020;
+}
+

@@ -1,16 +1,23 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import './carduser.css';
+import styles from './CarduUser.module.css';
 
 export const CardUser = () => {
   let name = 'Jhon Doe';
   return (
-    <div className="carduserContainer">
-      <div className="carduserImg">
-        <AccountCircleIcon sx={{ fontSize: 55 }} />
+    <div className={styles.cuContainer}>
+      <div>
+        <AccountCircleIcon
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontSize: 55
+          }}
+        />
       </div>
-      <div className="carduserTextcontainer">
-        <h3 className="carduserTitle">Hola, {name}!</h3>
-        <p className="carduserAuxtext">Bienvenido a su cuenta</p>
+      <div className={styles.cuTextcontainer}>
+        <h3 className={styles.cuTitle}>Hola, {name}!</h3>
+        <p className={styles.cuAuxText}>Bienvenido a su cuenta</p>
       </div>
     </div>
   );

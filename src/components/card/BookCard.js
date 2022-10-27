@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import './Bookcard.css';
-import { Link } from 'react-router-dom';
+import styles from './BookCard.module.css';
+import { Link as RouterLink } from 'react-router-dom';
 import React from 'react';
 
 export const BookCard = ({
@@ -12,23 +12,23 @@ export const BookCard = ({
   image
 }) => {
   return (
-    <div className="card-container">
-      <div className="card-img">
-        <img className="book-img" src={image} alt={title} />
+    <div className={styles.cardContainer}>
+      <div className={styles.cardImg}>
+        <img className={styles.bookImg} src={image} alt={title} />
       </div>
-      <div className="card-info">
+      <div className={styles.cardInfo}>
         <h4>{title}</h4>
-        <p className="author-book">author</p>
-        <p className="price-book">{price}</p>
+        <p className={styles.bookAuthor}>author</p>
+        <p className={styles.priceBook}>{price}</p>
       </div>
-      <div className="card-buttons">
-        <Link
-          to={`/categoria/libros/${isbn13}`}
-          style={{ textDecoration: 'none' }}>
+      <div className={styles.cardButtons}>
+        <RouterLink
+          className={styles.cardLink}
+          to={`/categoria/libros/${isbn13}`}>
           <Button size="small" variant="contained">
             Detalles
           </Button>
-        </Link>
+        </RouterLink>
         <Button
           size="small"
           variant="contained"

@@ -4,16 +4,15 @@
 } 
 */
 
-.form-container {
+.containerForm {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 74vh;
-  border: 1px solid black;
+  height: 76vh;
   padding: 10px 20%;
 }
 
-.title-form{
+.titleForm{
   font-size: 1.5rem;
   font-weight: 600;
   margin: 10px;

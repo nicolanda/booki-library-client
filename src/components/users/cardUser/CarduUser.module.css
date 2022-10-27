@@ -1,0 +1,41 @@
+/* ? cu -> card user  */
+
+.cuContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 0 .3125rem;
+  gap: .625rem;
+}
+
+.cuTextcontainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cuTitle {
+  text-align: right;
+  font-weight: 800;
+}
+
+.cuAuxText {
+  text-align: right;
+  font-size: 0.75rem;
+}
+
+@media screen and (max-width: 768px) {
+  .cuContainer{
+    justify-content: end;
+    margin-right: .3125rem;
+  }
+
+  .cuTitle {
+    text-align: right;
+  }
+
+  .cuTextcontainer{
+    padding: 0 .3125rem;
+  }
+}

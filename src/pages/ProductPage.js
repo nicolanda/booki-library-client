@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Header } from '../components/header/Header';
 import { getInfoBook } from '../services/getAllBooks/getAllBooks';
-import './productpage.css';
+import styles from './ProductPage.module.css';
 
 export const ProductPage = () => {
   let { isbn } = useParams();
@@ -31,9 +31,9 @@ export const ProductPage = () => {
   return (
     <div>
       <Header />
-      <div className="container">
-        <div className="img-container">
-          <img className="img-book" src={image} alt={title} />
+      <div className={styles.contianer}>
+        <div>
+          <img src={image} alt={title} />
         </div>
         <div>
           <h2>{title}</h2>
