@@ -3,7 +3,8 @@ export const regularExpression = {
   password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,15}$/,
   email: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
   cellphone: /^\d{9,10}$/,
-  numDocument: /^\d{6,10}$/
+  numDocument: /^\d{6,10}$/,
+  numWhite: /^(\s*|\d+)$/
 };
 
 export const errorMessage = {

@@ -1,6 +1,13 @@
 .container {
   width: 100%;
-  padding: 0 1.25rem;
+  height: 100%;
+  padding: 1.5625rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.titles{
+  font-weight: 800; 
 }
 
 .infoForm{
@@ -17,7 +24,11 @@
 }
 
 .formUser{
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem;
+  gap: 2.1875rem;
 }
 
 .passForm {
@@ -34,4 +45,34 @@
   justify-content: space-evenly;
   padding: .9375rem;
   gap: .9375rem;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .line{
+      height: 1px;
+      background-color: black;
+      padding: 1px;
+    }
+
+   .titles{
+      font-size: 1.3rem;
+      font-weight: 800;
+   }
+
+   .infoText{
+      font-size: 0.8rem;
+      letter-spacing: 0px;
+   }
+
+   .contentPassForm{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+   }
 }

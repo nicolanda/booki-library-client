@@ -12,7 +12,8 @@ export const FormInputText = ({
   reg,
   txtError,
   tam,
-  helperText,
+  helper,
+  req,
   confirmPass
 }) => {
   const onChange = (e) => {
@@ -35,7 +36,7 @@ export const FormInputText = ({
       id={id}
       value={state.field}
       error={state.err}
-      helperText={state.err ? txtError : helperText}
+      helperText={state.err ? txtError : helper}
       type={type}
       label={label}
       variant={variant}
@@ -44,7 +45,7 @@ export const FormInputText = ({
       onChange={onChange}
       onKeyUp={validation}
       onBlur={validation}
-      required
+      required={req}
     />
   );
 };

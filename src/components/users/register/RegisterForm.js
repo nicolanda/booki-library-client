@@ -110,6 +110,7 @@ export const RegisterForm = () => {
           reg={regularExpression.name}
           txtError={errorMessage.name}
           tam="90%"
+          req={!0}
         />
 
         <FormInputText
@@ -122,6 +123,7 @@ export const RegisterForm = () => {
           reg={regularExpression.email}
           txtError={errorMessage.email}
           tam="90%"
+          req={!0}
         />
 
         <FormInputText
@@ -134,7 +136,8 @@ export const RegisterForm = () => {
           reg={regularExpression.cellphone}
           txtError={errorMessage.cellphone}
           tam="90%"
-          helperText="Ejemplo: 3112345678"
+          helper="Ejemplo: 3112345678"
+          req={!0}
         />
 
         <FormInputText
@@ -148,6 +151,7 @@ export const RegisterForm = () => {
           reg={regularExpression.password}
           txtError={errorMessage.password}
           tam="90%"
+          req={!0}
         />
 
         <FormInputText
@@ -161,6 +165,7 @@ export const RegisterForm = () => {
           txtError={errorMessage.password2}
           confirmPass={confirmPass}
           tam="90%"
+          req={!0}
         />
 
         <FormSelectDocumentType
@@ -169,6 +174,7 @@ export const RegisterForm = () => {
           id="documentType"
           label="Tipo de documento"
           data={example}
+          req={!0}
         />
 
         <FormInputText
@@ -181,6 +187,7 @@ export const RegisterForm = () => {
           reg={regularExpression.numDocument}
           txtError={errorMessage.numDocument}
           tam="90%"
+          req={!0}
         />
 
         <div className="button-form">

@@ -14,3 +14,9 @@
   justify-content: space-between;
   width: 12rem;
 }
+
+@media screen and (max-width: 768px) {
+  .foContainer{
+    margin-top: auto;
+  }
+}

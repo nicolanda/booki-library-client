@@ -3,6 +3,7 @@ import React from 'react';
 import { Header } from '../components/header/Header';
 import { BookCard } from '../components/card/BookCard';
 import { uniquePositions } from '../utilities/uniquePositions';
+import { Footer } from '../components/footer/Footer';
 
 export const Home = ({ infobook }) => {
   return (
@@ -30,6 +31,7 @@ export const Home = ({ infobook }) => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

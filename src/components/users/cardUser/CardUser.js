@@ -5,7 +5,7 @@ export const CardUser = () => {
   let name = 'Jhon Doe';
   return (
     <div className={styles.cuContainer}>
-      <div>
+      <div className={styles.imgContainer}>
         <AccountCircleIcon
           sx={{
             display: 'flex',
