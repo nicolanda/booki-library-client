@@ -1,23 +1,30 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { Button, Typography } from '@mui/material';
+import { NavButton } from '../buttons/NavButton';
+import styles from './NavbarBooks.module.css';
 
 export const NavbarBooks = () => {
   return (
-    <div style={{ background: 'black' }}>
-      <RouterLink to="/user/id/dashboard">
-        <p>user</p>
-      </RouterLink>
-      <Button variant="text">
-        <Typography variant="body2" style={{ color: 'white' }}>
-          Libros
-        </Typography>
-      </Button>
-      <Button variant="text">
-        <Typography variant="body2" style={{ color: 'white' }}>
-          E-books
-        </Typography>
-      </Button>
+    <div className={styles.container}>
+      <NavButton
+        text="Usuario ! delete"
+        address="/user/id/dashboard"
+        type="navbar"
+      />
+      <NavButton
+        text="Libros"
+        address="/categoria/libros"
+        type="navbar"
+      />
+      <NavButton
+        text="Fisicos"
+        address="/categoria/libros"
+        type="navbar"
+      />
+      <NavButton
+        text="E-Books"
+        address="/categoria/libros"
+        type="navbar"
+      />
     </div>
   );
 };

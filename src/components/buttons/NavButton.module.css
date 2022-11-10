@@ -27,20 +27,21 @@
   display: flex;
   align-content: center;
   justify-content: center;
-  color: black;
-  background: white;
-  border: 1px solid black;
+  color: white;
+  background: var(--btn-nm-color);
+  border: 1px solid var(--btn-nm-color);
   border-radius: .3125rem;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 0;
   gap: 0.5rem;
   padding: .1563rem;
+  box-shadow: 2px 4px 6px -1px rgb(0 0 0 / 39%);
 }
 
 .MenuButton:hover{
   color: white;
-  background-color: rgb(35, 32, 32);
+  background-color: var(--btn-bg-color);
   text-decoration: none;
 }
 

@@ -5,7 +5,7 @@ import { BookCard } from '../components/card/BookCard';
 import { uniquePositions } from '../utilities/uniquePositions';
 import { Footer } from '../components/footer/Footer';
 
-export const Home = ({ infobook }) => {
+export const Home = ({ infobook, addToCart }) => {
   return (
     <div>
       <Header />
@@ -25,7 +25,11 @@ export const Home = ({ infobook }) => {
             <div className={styles.cards}>
               {infobook &&
                 uniquePositions(infobook, 3).map((book) => (
-                  <BookCard key={book.isbn13} {...book} />
+                  <BookCard
+                    addToCart={addToCart}
+                    key={book.id}
+                    {...book}
+                  />
                 ))}
             </div>
           </div>

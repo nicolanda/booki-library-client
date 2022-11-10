@@ -1,4 +1,382 @@
 .container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
+}
+
+.containerProduct{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.imgContainer{
+  padding-top: 10px;
+  width: 20%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.infoContainer{
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.featuredCon{
+  padding: 5px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.cart{
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+
+.textCart h1{
+  text-align: left;
+  padding-left: 5px;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.textCart h1::first-letter{
+  text-transform: capitalize;
+}
+
+.infoTxtCon{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.bookAuthors{
+  width: 50%;
+  padding-left: .3125rem;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: gray;
+  text-transform: lowercase;
+}
+
+.bookAuthors:first-letter{
+  text-transform: uppercase;
+}
+
+.bookAuthors h4 {
+  font-style: normal;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.containerPrice{
+  text-align: right;
+  padding-right: 5px;
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.containerPrice h4{
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.containerPrice p{
+  text-align: right;
+  font-weight: 500;
+}
+
+.menuOrder{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly
+}
+
+.menuQuantity {
+  display: flex;
+  align-items: center;
+}
+
+.bkCards{
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.bookInfo{
+  margin: 15px 0;
+  justify-content: center;
+  text-align: center;
+  width: 10.625rem;
+  border: 1px solid var(--btn-nm-color);
+  border-radius: 2.5px;
+}
+
+.bookInfo > h4{
+  background-color: var(--btn-nm-color);
+  text-transform: capitalize;
+  color: white;
+}
+
+.bookInfo > p{
+  background-color: white;
+  letter-spacing: normal;
+  font-size: .9rem;
+}
+
+.desc{
+  border: 1px solid var(--btn-nm-color);
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.desc > p {
+  padding: 5px .9375rem;
+  text-align: justify;
+  text-justify: inter-word;
+  letter-spacing: 0;
+  line-height: normal;
+  font-size: 1rem;
+}
+
+.descTitle{
+  cursor: pointer;
+  background-color: var(--btn-nm-color);
+}
+
+.itemTitles{
+  display: flex;
+  padding: 0 .9375rem;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  letter-spacing: 0;
+  font-size: .85rem;
+}
+
+.itemTitles > h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.descTitle:hover{
+  background-color: var(--btn-bg-color);
+}
+
+.poli{
+  border: 1px solid;
+  border-color: var(--btn-nm-color);
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.poliTitle{
+  display: flex;
+  padding: 0 .9375rem;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  letter-spacing: 0;
+  cursor: pointer;
+  background-color: var(--btn-nm-color);
+}
+
+.poliTitle > h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.poliTitle:hover{
+  background-color: var(--btn-bg-color);
+}
+
+.detailDelivery > p{
+  padding: 5px .9375rem;
+  text-align: justify;
+  text-justify: inter-word;
+  letter-spacing: 0;
+  line-height: normal;
+  font-size: 1rem;
+}
+
+.list{
+  list-style-type: disc;
+  margin: 0 1.25rem;
+  padding: 0 1.25rem;
+}
+
+.detailDelivery > h3 {
+  padding: 5px .9375rem;
+  letter-spacing: 0;
+  line-height: normal;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.times > h3 {
+  padding: 5px .9375rem;
+  letter-spacing: 0;
+  line-height: normal;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.list > li{
+  padding: 2.5px .9375rem;
+  text-align: justify;
+  text-justify: inter-word;
+  letter-spacing: 0;
+  line-height: normal;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .containerProduct{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .containerPrice{
+    text-align: right;
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .bookAuthors{
+    font-size: .95rem;
+  }
+
+  .imgContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .infoContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .featuredCon{
+    padding: 5px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .textCart h1 {
+    padding-top: 15px;
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .textCart p {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .cart{
+    width: 100%;
+  }
+
+  .menuOrder{
+    padding-top: 5px;
+  }
+
+  .menuQuantity {
+    display: flex;
+    align-items: center;
+  }
+
+  .bkCards{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .bookInfo{
+    margin: 15px 0;
+    justify-content: center;
+    text-align: center;
+    width: 10.625rem;
+    border: 1px solid var(--btn-nm-color);
+    border-radius: 2.5px;
+  }
+
+  .bookInfo > h4{
+    background-color: var(--btn-nm-color);
+    text-transform: capitalize;
+    color: white;
+  }
+
+  .bookInfo > p{
+    background-color: white;
+  }
+
+  .desc{
+    border: 1px solid var(--btn-nm-color);
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  .desc > p {
+    padding: 5px .9375rem;
+    text-align: justify;
+    text-justify: inter-word;
+    letter-spacing: 0;
+    line-height: normal;
+    font-size: 1rem;
+  }
+
+  .descTitle{
+    cursor: pointer;
+    background-color: var(--btn-nm-color);
+  }
+
+  .itemTitles{
+    display: flex;
+    padding: 0 .9375rem;
+    align-items:center;
+  
+}
 }

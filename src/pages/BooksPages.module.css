@@ -1,0 +1,28 @@
+.pageContainer{
+  width: 100%;
+  height: 100vh;
+}
+
+.bodyContainer{
+  display: flex;
+  flex-direction: row;
+}
+
+.menuContainer{
+  width: 20%;
+  height: auto;
+  display: flex;
+  flex-direction: row;;
+  padding: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+
+}
+
+.gridResponsive {
+  width: 100%;
+  padding: 0 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}

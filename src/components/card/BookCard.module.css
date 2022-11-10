@@ -7,7 +7,6 @@
   border-radius: 10px;
 }
 
-
 .cardImg{
   object-fit: contain;
   object-position: center;
@@ -15,17 +14,20 @@
   border-radius: 5px 5px 0 0;
 }
 
-.bookImg{
-  transform: scale(1.5);
-}
-
-.cardInfo > h4 {
+.title{
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    padding: 0.4rem 0;
+    padding: 0.4rem .3125rem;
     font-size: 1rem;
+    font-weight: 500;
+    text-transform: lowercase;
 }
+
+.title:first-letter{
+    text-transform: uppercase;
+}
+
 .cardButtons{
     display: flex;
     justify-content: space-evenly;
@@ -37,15 +39,42 @@
   text-decoration: none;
 }
 
-.authorBook{
+.propContainer{
+  display: flex;
+  align-items: center;
+  padding: 0px .25rem;
+  justify-content: space-between;
+}
+
+.propText{
+  font-size: .9rem;
+  font-weight: 500;
+  color: #000;
+  padding-right: .1875rem;
+}
+.bookAuthor{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   text-align: center;
   font-style: italic;
   font-size: 0.9rem;
   color: gray;
+  text-transform: lowercase;
+}
+
+.bookAuthor:first-letter{
+  text-transform: uppercase;
+}
+
+.format{
+  font-size: .9rem;
+  color: black;
+  text-decoration: underline;
+  text-transform: capitalize;
 }
 
 .priceBook {
-  padding-right: .5rem;
   text-align: right;
   font-weight: bold;
 }
