@@ -51,3 +51,10 @@
   background: #0e4e9c;
   border: 1px solid #0e4e9c;
 }
+
+.cartButton:active{
+  color: black;
+  background-color: white;
+  background-size: 100%;
+  transition: 0.2s;
+}

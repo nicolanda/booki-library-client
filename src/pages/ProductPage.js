@@ -8,8 +8,9 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { politicies } from '../policies/data';
 import { ButtonAddToCart } from '../components/cart/ButtonAddCart';
+import { InputBar } from '../components/cart/InputBar.';
 
-export const ProductPage = ({ infobook }) => {
+export const ProductPage = ({ infobook, addToCart }) => {
   const [isActive, setIsActive] = useState(true);
   const [showPolicies, setShowPoliticies] = useState(false);
 
@@ -22,7 +23,7 @@ export const ProductPage = ({ infobook }) => {
   // }, [isbn]);
 
   let info = infobook.filter((book) => book.id === Number(id))[0];
-  console.log(info);
+
   const {
     title,
     isbn,
@@ -79,11 +80,15 @@ export const ProductPage = ({ infobook }) => {
               </div>
               <div className={styles.menuOrder}>
                 <div className={styles.menuQuantity}>
-                  <button>-</button>
-                  <p>cantidad</p>
-                  <button>+</button>
+                  <InputBar />
                 </div>
-                <ButtonAddToCart type="cart" />
+                <div>
+                  <ButtonAddToCart
+                    addToCart={addToCart}
+                    id={id}
+                    type="cart"
+                  />
+                </div>
               </div>
             </div>
 

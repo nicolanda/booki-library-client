@@ -5,6 +5,13 @@ export const ButtonAddToCart = ({ type, addToCart, id }) => {
     card: styles.cardButton,
     cart: styles.cartButton
   };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log('add item: ' + id);
+    addToCart(id);
+  };
+
   return (
     <div>
       {
@@ -12,7 +19,7 @@ export const ButtonAddToCart = ({ type, addToCart, id }) => {
           card: (
             <button
               className={chooseType[type]}
-              onClick={() => addToCart(id)}>
+              onClick={handleClick}>
               <p>Agregar</p>
               <AddShoppingCartIcon fontSize="medium" />
             </button>
@@ -20,7 +27,7 @@ export const ButtonAddToCart = ({ type, addToCart, id }) => {
           cart: (
             <button
               className={chooseType[type]}
-              onClick={() => addToCart(id)}>
+              onClick={handleClick}>
               <p>Añadir al carrito</p>
               <AddShoppingCartIcon fontSize="large" />
             </button>

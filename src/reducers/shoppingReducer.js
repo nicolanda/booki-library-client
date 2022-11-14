@@ -17,12 +17,6 @@ export const shoppingReducer = (state, action) => {
         cart: [...state.cart, newItem]
       };
     }
-    case TYPES.REMOVE_ONE_FROM_CART:
-      return {};
-    case TYPES.REMOVE_ALL_FROM_CART:
-      return {};
-    case TYPES.CLEAR_CART:
-      return {};
     default:
       return state;
   }

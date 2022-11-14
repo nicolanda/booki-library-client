@@ -12,12 +12,8 @@ export const BookCard = ({
   format,
   addToCart
 }) => {
-  const money = price.toLocaleString('es-CO', {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-    style: 'currency',
-    currency: 'COP'
-  });
+  const money = price;
+
   return (
     <div className={styles.cardContainer}>
       <div className={styles.cardImg}>
@@ -35,7 +31,14 @@ export const BookCard = ({
         </div>
         <div className={styles.propContainer}>
           <p className={styles.propText}>Precio:</p>
-          <p className={styles.priceBook}>{money}</p>
+          <p className={styles.priceBook}>
+            {money.toLocaleString('es-CO', {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+              style: 'currency',
+              currency: 'COP'
+            })}
+          </p>
         </div>
       </div>
       <div className={styles.cardButtons}>

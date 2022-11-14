@@ -44,6 +44,10 @@ function App() {
     dispatch({ type: TYPES.ADD_TO_CART, payload: id });
   };
 
+  const deleteFromCart = (id) => {
+    dispatch({ type: TYPES.REMOVE_ONE_FROM_CART, payload: id });
+  };
+
   return (
     <BrowserRouter>
       <CssBaseline />
@@ -61,7 +65,9 @@ function App() {
         />
         <Route
           path="/categoria/libros/:id"
-          element={<ProductPage infobook={products} />}
+          element={
+            <ProductPage infobook={products} addToCart={addToCart} />
+          }
         />
         <Route path="user" element="" />
         <Route path="user/login" element={<LoginPage />} />
@@ -74,7 +80,13 @@ function App() {
         </Route>
         <Route
           path="cart"
-          element={<CartPage infobook={products} />}
+          element={
+            <CartPage
+              infobook={products}
+              cart={cart}
+              actions={deleteFromCart}
+            />
+          }
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

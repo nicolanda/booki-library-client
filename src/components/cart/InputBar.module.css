@@ -10,17 +10,22 @@ input[type=number]{
 
 .inputContainer{
     display: flex;
+    width: 100%;
+    height: 100%;
     align-items: center;
     justify-content: center;
 }
 
 .txtField{
     width: 100%;
+    height: 80%;
 }
 
 .inpt{
-  width: 100%;
-  border: thin solid gray;
-  border-radius: 5px;
-  text-align: center;
+    width: 100%;
+    height: 100%;
+    border: thin solid gray;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.1rem;
 }

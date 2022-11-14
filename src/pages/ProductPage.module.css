@@ -112,6 +112,7 @@
 .menuQuantity {
   display: flex;
   align-items: center;
+  width: 125px;
 }
 
 .bkCards{
@@ -377,6 +378,5 @@
     display: flex;
     padding: 0 .9375rem;
     align-items:center;
-  
 }
 }

@@ -1,0 +1,17 @@
+.storeContainer{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.itemContainer {
+  width: 80%;
+  height: auto;
+}
+
+.totalContainer {
+  width: 20%;
+  height: auto;
+  padding: 5px;
+  border: 2px solid black;
+}
