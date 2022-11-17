@@ -21,6 +21,8 @@ import {
 import { useReducer } from 'react';
 import { BooksPages } from './pages/BooksPages';
 import { TYPES } from './actions/shoppingActions';
+import { AuthorsPage } from './pages/admin/AuthorsPage';
+import { AuthorList } from './components/admin/book/autores/AuthorList';
 
 function App() {
   // const [infoCard, setInfoCard] = useState({});
@@ -77,6 +79,9 @@ function App() {
           <Route path="payment" element={<PaymentDashboard />} />
           <Route path="address" element={<AddressDashboard />} />
           <Route path="orders" element={<HistoryOrdersDashboard />} />
+          <Route path="authors" element={<AuthorsPage />}>
+            <Route path=":idAuthor" element={<AuthorsPage />} />
+          </Route>
         </Route>
         <Route
           path="cart"

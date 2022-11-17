@@ -4,7 +4,9 @@ export const regularExpression = {
   email: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
   cellphone: /^\d{9,10}$/,
   numDocument: /^\d{6,10}$/,
-  numWhite: /^(\s*|\d+)$/
+  numWhite: /^(\s*|\d+)$/,
+  lowerCase: /^[a-z\s]+/,
+  fourth: /^\d{4}$/
 };
 
 export const errorMessage = {
@@ -14,5 +16,7 @@ export const errorMessage = {
     'La contraseña deben contener entre 6 15 caracteres, una mayúscula y un número',
   password2: 'Las contraseñas no coinciden',
   cellphone: 'El número de celular no es válido',
-  numDocument: 'El número de documento no es válido'
+  numDocument: 'El número de documento no es válido',
+  lowercase: 'el texto debe estar en minusculas',
+  year: 'ejemplo de fecha: 1900'
 };

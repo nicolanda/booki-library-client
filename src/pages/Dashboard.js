@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { MenuAdmin } from '../components/admin/MenuAdmin';
 import { Footer } from '../components/footer/Footer';
 import { Header } from '../components/header/Header';
 import { CardUser } from '../components/users/cardUser/CardUser';
@@ -15,6 +16,9 @@ export const Dashboard = () => {
         <div className={styles.navContainer}>
           <CardUser />
           <MenuUser />
+          <hr />
+          <MenuAdmin />
+          <hr />
         </div>
         <div className={styles.outletContainer}>
           <Outlet />

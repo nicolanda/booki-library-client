@@ -6,7 +6,6 @@ import { useState } from 'react';
 
 export const AddressDashboard = () => {
   const [showAddressForm, setShowAddressForm] = useState(null);
-  console.log(showAddressForm);
   return (
     <div className={styles.container}>
       <h1 className={styles.titles}>Libreta de direcciones</h1>

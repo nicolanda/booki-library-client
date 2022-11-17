@@ -1,0 +1,59 @@
+.containerForm{
+  display: flex;
+  flex-direction: row;
+}
+
+.partForm{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 0 .3125rem;
+}
+
+.bodyForm{
+  display: flex;
+  flex-direction: column;
+  padding: 10px 25px;
+  gap: 10px;
+}
+
+.conBtnForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.partTable{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 0 .3125rem;
+}
+
+.containerItemTable{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 200px;
+  overflow-y: auto;
+  padding: 0 .3125rem;
+}
+
+.itemsTable{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ebebeb;
+  margin: 5px 0;
+  padding: .3125rem;
+  border-radius: 1rem;
+}
+
+.itemName{
+  padding-left: .3125rem;
+}
+.deleteButton:hover{
+  color: red;
+}
