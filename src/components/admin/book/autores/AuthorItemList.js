@@ -8,54 +8,44 @@ import {
   regularExpression,
   errorMessage
 } from '../../../../utilities/validators';
-import { useDispatch } from 'react-redux';
 import {
-  deleteAuthor,
-  updateAuthor
-} from '../../../../features/author/authorSlice';
-import { Link, useParams } from 'react-router-dom';
+  useDeleteAuthorMutation,
+  useUpdateAuthorMutation
+} from '../../../../services/api/books/authorApi';
+import styles from './AuthorItemList.module.css';
 
-export const AuthorItemList = ({ id, name, bornYear, country }) => {
-  const { idAuthor } = useParams();
-  const dispatch = useDispatch();
-  const [items, setItems] = useState([]);
+export const AuthorItemList = (data) => {
   const [edit, setEdit] = useState(false);
-  const [name1, setName1] = useState({ field: name, err: null });
-  const [year, setYear] = useState({ field: bornYear, err: null });
-  const [country1, setCountry1] = useState({
-    field: country,
+  const [name, setName] = useState({ field: data.name, err: null });
+  const [year, setYear] = useState({
+    field: data.bornYear,
     err: null
   });
+  const [country, setCountry] = useState({
+    field: data.country,
+    err: null
+  });
+  const [deleteAuthor] = useDeleteAuthorMutation();
+  const [updateAuthor] = useUpdateAuthorMutation();
 
-  const handleUpdate = (id) => {
-    console.log('actualizar');
-    setItems(() => [
-      {
-        name: name1.field,
-        bornYear: year.field,
-        country: country1.field
-      }
-    ]);
-    dispatch(updateAuthor(id, items));
+  const updateFn = () => {
+    updateAuthor({
+      id: data.id,
+      name: name.field,
+      bornYear: year.field,
+      country: country.field
+    });
+    setEdit(false);
   };
-
-  const handleDelete = async (id) => {
-    console.log('eliminar');
-    dispatch(deleteAuthor(id));
-  };
-  // const handleEdit = () => {
-  //   setEdit(!edit);
-  // };
-
   return (
     <tbody>
-      <tr key={id}>
+      <tr key={data.id}>
         <td>
           {edit ? (
             <FormInputText
               id="name"
-              state={name1}
-              setState={setName1}
+              state={name}
+              setState={setName}
               label="Nombre completo"
               variant="standard"
               size="small"
@@ -67,7 +57,7 @@ export const AuthorItemList = ({ id, name, bornYear, country }) => {
               req={true}
             />
           ) : (
-            name
+            data.name
           )}
         </td>
         <td>
@@ -86,15 +76,15 @@ export const AuthorItemList = ({ id, name, bornYear, country }) => {
               req={true}
             />
           ) : (
-            bornYear
+            data.bornYear
           )}
         </td>
         <td>
           {edit ? (
             <FormInputText
               id="country"
-              state={country1}
-              setState={setCountry1}
+              state={country}
+              setState={setCountry}
               label="País de origen"
               variant="standard"
               size="small"
@@ -105,23 +95,30 @@ export const AuthorItemList = ({ id, name, bornYear, country }) => {
               req={true}
             />
           ) : (
-            country
+            data.country
           )}
         </td>
         <td>
-          {edit ? (
-            <IconButton size="large" onClick={handleUpdate}>
+          {!!edit && (
+            <IconButton
+              className={styles.saveBtn}
+              size="large"
+              onClick={() => updateFn()}>
               <SaveIcon fontSize="inherit" />
             </IconButton>
-          ) : (
-            <IconButton size="large" onClick={() => setEdit(!edit)}>
-              <EditIcon fontSize="inherit" />
-            </IconButton>
-            // <Link to={`${id}`}>
-
-            // </Link>
           )}
-          <IconButton onClick={() => handleDelete(id)} size="large">
+
+          <IconButton
+            className={styles.editBtn}
+            size="large"
+            onClick={() => setEdit(!edit)}>
+            <EditIcon fontSize="inherit" />
+          </IconButton>
+
+          <IconButton
+            className={styles.deleteBtn}
+            onClick={() => deleteAuthor(data.id)}
+            size="large">
             <DeleteIcon fontSize="inherit" />
           </IconButton>
         </td>

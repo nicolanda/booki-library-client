@@ -7,29 +7,41 @@ import {
 import { FormInputText } from '../../../forms/FormInputText';
 import DeleteIcon from '@mui/icons-material/Delete';
 import styles from './AuthorAddForm.module.css';
+import { useCreateAuthorMutation } from '../../../../services/api/books/authorApi';
 
 export const AuthorAddForm = () => {
   const req = false;
-  const [name, setName] = useState({ field: '', err: null });
-  const [year, setYear] = useState({ field: '', err: null });
+  const [nameForm, setNameForm] = useState({ field: '', err: null });
+  const [yearForm, setYearForm] = useState({ field: '', err: null });
   const [country, setCountry] = useState({ field: '', err: null });
   const [items, setItems] = useState([]);
   const { lowerCase, fourth } = regularExpression;
-
+  const [createAuthor] = useCreateAuthorMutation();
+  /*
+    !cambiando el nombre de estados verificar si estan pasando al arrelgo completo
+  */
   const hanldeSubmitForm = (e) => {
     e.preventDefault();
-    if (name.err === !1 && year.err === !1 && country.err === !1) {
+    if (
+      nameForm.err === !1 &&
+      yearForm.err === !1 &&
+      country.err === !1
+    ) {
       setItems((prev) => [
         ...prev,
-        { name: name.field, year: year.field, country: country.field }
+        {
+          name: nameForm.field.trim(),
+          bornYear: Number(yearForm.field),
+          country: country.field.trim()
+        }
       ]);
 
-      setName({ field: '', err: null });
-      setYear({ field: '', err: null });
+      setNameForm({ field: '', err: null });
+      setYearForm({ field: '', err: null });
       setCountry({ field: '', err: null });
     } else {
-      setName({ ...name, err: !0 });
-      setYear({ ...year, err: !0 });
+      setNameForm({ ...nameForm, err: !0 });
+      setYearForm({ ...yearForm, err: !0 });
       setCountry({ ...country, err: !0 });
     }
   };
@@ -38,6 +50,10 @@ export const AuthorAddForm = () => {
     setItems((prev) => prev.filter((item, i) => i !== index));
   };
 
+  const handleCreateAthors = () => {
+    console.log(items);
+    // createAuthor({ items });
+  };
   return (
     <div className={styles.containerForm}>
       <div className={styles.partForm}>
@@ -47,8 +63,8 @@ export const AuthorAddForm = () => {
           <div className={styles.bodyForm}>
             <FormInputText
               id="name"
-              state={name}
-              setState={setName}
+              state={nameForm}
+              setState={setNameForm}
               label="Nombre completo"
               variant="outlined"
               size="small"
@@ -60,8 +76,8 @@ export const AuthorAddForm = () => {
             />
             <FormInputText
               id="year"
-              state={year}
-              setState={setYear}
+              state={yearForm}
+              setState={setYearForm}
               label="Año de nacimiento"
               variant="outlined"
               size="small"
@@ -112,8 +128,8 @@ export const AuthorAddForm = () => {
           ))}
         </div>
         <div>
-          <button>
-            <p>save</p>
+          <button onClick={handleCreateAthors}>
+            <p>Guardar</p>
           </button>
         </div>
       </div>

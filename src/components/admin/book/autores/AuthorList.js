@@ -8,16 +8,17 @@ import {
 import authorServiceAxios from '../../../../services/api/books/authorServiceAxios';
 import { fetcherAuthor } from '../../../../services/api/books/authorsService';
 import { getidentificationType } from '../../../../services/api/register/indetificationType';
-import { IconButton } from '@mui/material';
+import { CircularProgress, IconButton } from '@mui/material';
 import { AuthorItemList } from './AuthorItemList';
 import { TableHead } from '../../tables/TableHead';
+import { useGetAllAuthorsQuery } from '../../../../services/api/books/authorApi';
 
 export const AuthorList = () => {
-  const dispatch = useDispatch();
-  const allAuthors = useSelector(selectAllAuthors);
-  const [showForm, setShowForm] = useState(null);
-  const [axauthor, setAxAuthor] = useState([]);
-
+  // const dispatch = useDispatch();
+  // const allAuthors = useSelector(selectAllAuthors);
+  // const [showForm, setShowForm] = useState(null);
+  // const [axauthor, setAxAuthor] = useState([]);
+  const { data: allAuthors, isLoading } = useGetAllAuthorsQuery();
   const columns = [
     { label: 'Nombre', field: 'name', sorteable: true },
     { label: 'Año', field: 'year', sorteable: true },
@@ -46,20 +47,27 @@ export const AuthorList = () => {
 
   // const ident = identificationType;
   // console.log(ident);
-
+  /*
   useEffect(() => {
     authorServiceAxios.getAll().then((res) => {
       setAxAuthor(res.data);
     });
   }, []);
-
-  // console.log(axauthor);
-
   useEffect(() => {
     dispatch(getAllAuthors());
   }, [dispatch]);
+*/
+  // console.log(axauthor);
+  // console.log(allAuthors);
 
-  console.log(allAuthors);
+  //console.log(allAuthors);
+
+  if (isLoading)
+    return (
+      <div>
+        <CircularProgress />
+      </div>
+    );
 
   return (
     <div>

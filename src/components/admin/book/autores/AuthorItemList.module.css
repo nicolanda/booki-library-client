@@ -1,0 +1,12 @@
+
+.saveBtn:hover{
+  color: #4CAF50;
+}
+
+.editBtn:hover{
+  color: mediumturquoise
+}
+
+.deleteBtn:hover {
+  color: red;
+}

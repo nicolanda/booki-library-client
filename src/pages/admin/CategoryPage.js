@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import styles from './AuthorsPage.module.css';
-import { AuthorList } from '../../components/admin/book/autores/AuthorList';
-import { AuthorAddForm } from '../../components/admin/book/autores/AuthorAddForm';
+import styles from './CategoryPage.module.css';
 
-export const AuthorsPage = () => {
+export const CategoryPage = () => {
   const [showForm, setShowForm] = useState(null);
-
   return (
     <div className={styles.container}>
-      <h1 className={styles.titles}>Autores</h1>
+      <h1 className={styles.titles}>Categorias</h1>
       <div className={styles.line}></div>
       <div className={styles.containerBtn}>
         <button
@@ -26,12 +23,11 @@ export const AuthorsPage = () => {
           Agregar nuevo Autor
         </button>
       </div>
-      {showForm && <AuthorAddForm />}
+      {showForm && <p>holie</p>}
       <div>
-        <h1 className={styles.titles}>Lista de autores</h1>
+        <h1 className={styles.titles}>Lista de Categorias</h1>
       </div>
       <div className={styles.line}></div>
-      <AuthorList />
     </div>
   );
 };
