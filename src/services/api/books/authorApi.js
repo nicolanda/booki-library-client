@@ -4,8 +4,8 @@ import {
 } from '@reduxjs/toolkit/query/react';
 
 const url = 'http://localhost:5000/api/';
-export const authorApi = createApi({
-  reducerPath: 'authorApi',
+export const bookiApi = createApi({
+  reducerPath: 'bookiApi',
   baseQuery: fetchBaseQuery({
     baseUrl: url
   }),
@@ -48,4 +48,4 @@ export const {
   useCreateAuthorMutation,
   useUpdateAuthorMutation,
   useDeleteAuthorMutation
-} = authorApi;
+} = bookiApi;
