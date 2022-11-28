@@ -1,20 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authorReducer from '../features/author/authorSlice';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { authorApi } from '../services/api/books/authorApi';
-import { categoryApi } from '../services/api/books/categoryApi';
+import { bookiApi } from '../services/api/books/BookiApi';
 
 export const store = configureStore({
   reducer: {
     authors: authorReducer,
-    [authorApi.reducerPath]: authorApi.reducer,
-    [categoryApi.reducerPath]: categoryApi.reducer
+    [bookiApi.reducerPath]: bookiApi.reducer
   },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .concat(authorApi.middleware)
-      .concat(categoryApi.middleware)
+    getDefaultMiddleware().concat(bookiApi.middleware)
 });
 
 setupListeners(store.dispatch);

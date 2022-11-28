@@ -11,7 +11,7 @@ import {
 import {
   useDeleteAuthorMutation,
   useUpdateAuthorMutation
-} from '../../../../services/api/books/authorApi';
+} from '../../../../services/api/books/BookiApi';
 import styles from './AuthorItemList.module.css';
 
 export const AuthorItemList = (data) => {
@@ -51,7 +51,6 @@ export const AuthorItemList = (data) => {
               size="small"
               txtError={errorMessage.lowercase}
               reg={regularExpression.lowerCase}
-              text
               helper="4 Caracteres minimo"
               tam="100%"
               req={true}

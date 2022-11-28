@@ -24,6 +24,3 @@ export const categoryApi = createApi({
     })
   })
 });
-
-export const { useGetAllCategoriesQuery, useCreateCategoryMutation } =
-  categoryApi;

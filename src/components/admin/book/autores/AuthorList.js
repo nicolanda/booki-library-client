@@ -11,7 +11,7 @@ import { getidentificationType } from '../../../../services/api/register/indetif
 import { CircularProgress, IconButton } from '@mui/material';
 import { AuthorItemList } from './AuthorItemList';
 import { TableHead } from '../../tables/TableHead';
-import { useGetAllAuthorsQuery } from '../../../../services/api/books/authorApi';
+import { useGetAllAuthorsQuery } from '../../../../services/api/books/BookiApi';
 
 export const AuthorList = () => {
   // const dispatch = useDispatch();

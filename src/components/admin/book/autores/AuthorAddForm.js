@@ -7,7 +7,7 @@ import {
 import { FormInputText } from '../../../forms/FormInputText';
 import DeleteIcon from '@mui/icons-material/Delete';
 import styles from './AuthorAddForm.module.css';
-import { useCreateAuthorMutation } from '../../../../services/api/books/authorApi';
+import { useCreateAuthorMutation } from '../../../../services/api/books/BookiApi';
 
 export const AuthorAddForm = () => {
   const req = false;

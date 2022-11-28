@@ -14,7 +14,6 @@ export const bookiApi = createApi({
       query: () => '/author',
       providesTags: ['Author']
     }),
-
     createAuthor: builder.mutation({
       query: ([newAuthor]) => ({
         url: '/author',
@@ -23,7 +22,6 @@ export const bookiApi = createApi({
       }),
       invalidatesTags: ['Author']
     }),
-
     updateAuthor: builder.mutation({
       query: (updateAuthor) => ({
         url: `/author/${updateAuthor.id}`,
@@ -32,18 +30,50 @@ export const bookiApi = createApi({
       }),
       invalidatesTags: ['Author']
     }),
-
     deleteAuthor: builder.mutation({
       query: (id) => ({
         url: `/author/${id}`,
         method: 'DELETE'
       }),
       invalidatesTags: ['Author']
+    }),
+
+    getAllCategories: builder.query({
+      query: () => '/category',
+      providesTags: ['Category']
+    }),
+    createCategory: builder.mutation({
+      query: (newCategory) => ({
+        url: '/category',
+        method: 'POST',
+        body: newCategory
+      }),
+      invalidatesTags: ['Category'],
+      extraOptions: { maxRetries: 0 }
+    }),
+    updateCategory: builder.mutation({
+      query: (updateCategory) => ({
+        url: `/category/${updateCategory.id}`,
+        method: 'PUT',
+        body: updateCategory
+      }),
+      invalidatesTags: ['Category']
+    }),
+    deleteCategory: builder.mutation({
+      query: (id) => ({
+        url: `/category/${id}`,
+        method: 'DELETE'
+      }),
+      invalidatesTags: ['Category']
     })
   })
 });
 
 export const {
+  useGetAllCategoriesQuery,
+  useCreateCategoryMutation,
+  useUpdateCategoryMutation,
+  useDeleteCategoryMutation,
   useGetAllAuthorsQuery,
   useCreateAuthorMutation,
   useUpdateAuthorMutation,

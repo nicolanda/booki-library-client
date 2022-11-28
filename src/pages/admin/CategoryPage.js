@@ -2,6 +2,8 @@ import { useState } from 'react';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import styles from './CategoryPage.module.css';
+import { CategoriesList } from '../../components/admin/book/categories/CategoriesList';
+import { CategoryAddForm } from '../../components/admin/book/categories/CategoryAddForm';
 
 export const CategoryPage = () => {
   const [showForm, setShowForm] = useState(null);
@@ -23,11 +25,12 @@ export const CategoryPage = () => {
           Agregar nuevo Autor
         </button>
       </div>
-      {showForm && <p>holie</p>}
+      {showForm && <CategoryAddForm />}
       <div>
         <h1 className={styles.titles}>Lista de Categorias</h1>
       </div>
       <div className={styles.line}></div>
+      <CategoriesList />
     </div>
   );
 };
