@@ -10,6 +10,7 @@ export const bookiApi = createApi({
     baseUrl: url
   }),
   endpoints: (builder) => ({
+    // ! autores
     getAllAuthors: builder.query({
       query: () => '/author',
       providesTags: ['Author']
@@ -37,7 +38,7 @@ export const bookiApi = createApi({
       }),
       invalidatesTags: ['Author']
     }),
-
+    // ! categorias
     getAllCategories: builder.query({
       query: () => '/category',
       providesTags: ['Category']
@@ -65,6 +66,34 @@ export const bookiApi = createApi({
         method: 'DELETE'
       }),
       invalidatesTags: ['Category']
+    }),
+    // ! impuesto libros
+    getAllTaxes: builder.query({
+      query: () => '/priceTax',
+      providesTags: ['priceTax']
+    }),
+    createTaxes: builder.mutation({
+      query: (newTax) => ({
+        url: '/priceTax',
+        method: 'POST',
+        body: newTax
+      }),
+      invalidatesTags: ['priceTax']
+    }),
+    updateTaxes: builder.mutation({
+      query: (updateTax) => ({
+        url: `/priceTax/${updateTax.id}`,
+        method: 'PUT',
+        body: updateTax
+      }),
+      invalidatesTags: ['priceTax']
+    }),
+    deleteTaxes: builder.mutation({
+      query: (id) => ({
+        url: `/priceTax/${id}`,
+        method: 'DELETE'
+      }),
+      invalidatesTags: ['priceTax']
     })
   })
 });
@@ -77,5 +106,9 @@ export const {
   useGetAllAuthorsQuery,
   useCreateAuthorMutation,
   useUpdateAuthorMutation,
-  useDeleteAuthorMutation
+  useDeleteAuthorMutation,
+  useGetAllTaxesQuery,
+  useCreateTaxesMutation,
+  useUpdateTaxesMutation,
+  useDeleteTaxesMutation
 } = bookiApi;

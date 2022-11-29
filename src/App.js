@@ -24,6 +24,7 @@ import { TYPES } from './actions/shoppingActions';
 import { AuthorsPage } from './pages/admin/AuthorsPage';
 import { AuthorList } from './components/admin/book/autores/AuthorList';
 import { CategoryPage } from './pages/admin/CategoryPage';
+import { TaxesPage } from './pages/admin/TaxesPage';
 
 function App() {
   // const [infoCard, setInfoCard] = useState({});
@@ -82,6 +83,7 @@ function App() {
           <Route path="orders" element={<HistoryOrdersDashboard />} />
           <Route path="authors" element={<AuthorsPage />} />
           <Route path="categories" element={<CategoryPage />} />
+          <Route path="taxes" element={<TaxesPage />} />
         </Route>
         <Route
           path="cart"

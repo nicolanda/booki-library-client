@@ -6,7 +6,8 @@ export const regularExpression = {
   numDocument: /^\d{6,10}$/,
   numWhite: /^(\s*|\d+)$/,
   lowerCase: /^[a-z\s]+/,
-  fourth: /^\d{4}$/
+  fourth: /^\d{4}$/,
+  onetohoundred: /^([1-9]|[1-9][0-9]|100)$/
 };
 
 export const errorMessage = {
@@ -18,5 +19,6 @@ export const errorMessage = {
   cellphone: 'El número de celular no es válido',
   numDocument: 'El número de documento no es válido',
   lowercase: 'el texto debe estar en minusculas',
-  year: 'ejemplo de fecha: 1900'
+  year: 'ejemplo de fecha: 1900',
+  onetohoundred: 'el numero debe estar entre 1 y 100'
 };
