@@ -23,8 +23,7 @@ export const booksData = [
     },
     price_discount: {
       name: 'base_value',
-      value: 0,
-      active: true
+      value: 0
     },
     price_tax: {
       name: 'IVA_1',

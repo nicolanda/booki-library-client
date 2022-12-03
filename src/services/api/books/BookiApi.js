@@ -10,18 +10,50 @@ export const bookiApi = createApi({
     baseUrl: url
   }),
   endpoints: (builder) => ({
+    // !libros
+    getAllBooks: builder.query({
+      query: () => '/book',
+      providesTags: ['Books']
+    }),
+    getBookById: builder.query({
+      query: (id) => `/book/${id}`
+    }),
+    createBook: builder.mutation({
+      query: (newBook) => ({
+        url: '/book',
+        method: 'POST',
+        body: newBook
+      }),
+      invalidatesTags: ['Books']
+    }),
+    updateBook: builder.mutation({
+      query: (book) => ({
+        url: `/book/${book.id}`,
+        method: 'PUT',
+        body: book
+      }),
+      invalidatesTags: ['Books']
+    }),
+    deleteBook: builder.mutation({
+      query: (id) => ({
+        url: `/book/${id}`,
+        method: 'DELETE'
+      }),
+      invalidatesTags: ['Books']
+    }),
     // ! autores
     getAllAuthors: builder.query({
       query: () => '/author',
       providesTags: ['Author']
     }),
     createAuthor: builder.mutation({
-      query: ([newAuthor]) => ({
+      query: (newAuthor) => ({
         url: '/author',
         method: 'POST',
-        body: [newAuthor]
+        body: newAuthor
       }),
-      invalidatesTags: ['Author']
+      invalidatesTags: ['Author'],
+      extraOptions: { maxRetries: 0 }
     }),
     updateAuthor: builder.mutation({
       query: (updateAuthor) => ({
@@ -94,11 +126,44 @@ export const bookiApi = createApi({
         method: 'DELETE'
       }),
       invalidatesTags: ['priceTax']
+    }),
+    // ! descuentos
+    getAllDiscounts: builder.query({
+      query: () => '/priceDiscount',
+      providesTags: ['priceDiscount']
+    }),
+    createDiscounts: builder.mutation({
+      query: (newDiscount) => ({
+        url: '/priceDiscount',
+        method: 'POST',
+        body: newDiscount
+      }),
+      invalidatesTags: ['priceDiscount']
+    }),
+    updateDiscounts: builder.mutation({
+      query: (updateDiscount) => ({
+        url: `/priceDiscount/${updateDiscount.id}`,
+        method: 'PUT',
+        body: updateDiscount
+      }),
+      invalidatesTags: ['priceDiscount']
+    }),
+    deleteDiscounts: builder.mutation({
+      query: (id) => ({
+        url: `/priceDiscount/${id}`,
+        method: 'DELETE'
+      }),
+      invalidatesTags: ['priceDiscount']
     })
   })
 });
 
 export const {
+  useGetAllBooksQuery,
+  useGetBookByIdQuery,
+  useCreateBookMutation,
+  useUpdateBookMutation,
+  useDeleteBookMutation,
   useGetAllCategoriesQuery,
   useCreateCategoryMutation,
   useUpdateCategoryMutation,
@@ -110,5 +175,9 @@ export const {
   useGetAllTaxesQuery,
   useCreateTaxesMutation,
   useUpdateTaxesMutation,
-  useDeleteTaxesMutation
+  useDeleteTaxesMutation,
+  useGetAllDiscountsQuery,
+  useCreateDiscountsMutation,
+  useUpdateDiscountsMutation,
+  useDeleteDiscountsMutation
 } = bookiApi;

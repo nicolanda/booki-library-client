@@ -91,6 +91,7 @@ export const RegisterForm = () => {
     });
   };
 
+  console.log(documentType);
   return (
     <div className={styles.containerForm}>
       <div className={styles.titleForm}>

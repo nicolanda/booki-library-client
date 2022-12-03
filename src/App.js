@@ -25,6 +25,8 @@ import { AuthorsPage } from './pages/admin/AuthorsPage';
 import { AuthorList } from './components/admin/book/autores/AuthorList';
 import { CategoryPage } from './pages/admin/CategoryPage';
 import { TaxesPage } from './pages/admin/TaxesPage';
+import { DiscountPage } from './pages/admin/DiscounPage';
+import { BooksAdmin } from './pages/admin/BooksAdmin';
 
 function App() {
   // const [infoCard, setInfoCard] = useState({});
@@ -81,9 +83,11 @@ function App() {
           <Route path="payment" element={<PaymentDashboard />} />
           <Route path="address" element={<AddressDashboard />} />
           <Route path="orders" element={<HistoryOrdersDashboard />} />
+          <Route path="books" element={<BooksAdmin />}></Route>
           <Route path="authors" element={<AuthorsPage />} />
           <Route path="categories" element={<CategoryPage />} />
           <Route path="taxes" element={<TaxesPage />} />
+          <Route path="discount" element={<DiscountPage />} />
         </Route>
         <Route
           path="cart"
