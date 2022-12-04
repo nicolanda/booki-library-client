@@ -61,7 +61,7 @@ export const AuthorAddForm = () => {
     }
   };
 
-  isSuccess && alert('Autor creado con exito');
+  //isSuccess && alert('Autor creado con exito');
 
   // const handleDeleteItemTable = (index) => {
   //   setItems((prev) => prev.filter((item, i) => i !== index));

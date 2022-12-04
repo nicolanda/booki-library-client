@@ -7,7 +7,7 @@ export const regularExpression = {
   cellphone: /^\d{9,10}$/,
   numDocument: /^\d{6,10}$/,
   numWhite: /^(\s*|\d+)$/,
-  lowerCase: /^[a-z\s]+/,
+  lowerCase: /^[a-zñ\u00C0-\u00FF\s]+/,
   fourth: /^\d{4}$/,
   zerotohoundred: /^([0-9]|[1-9][0-9]|100)$/,
   onetohoundred: /^([1-9]|[1-9][0-9]|100)$/,

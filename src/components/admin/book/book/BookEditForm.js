@@ -3,7 +3,8 @@ import {
   useGetAllAuthorsQuery,
   useGetAllCategoriesQuery,
   useGetAllDiscountsQuery,
-  useGetAllTaxesQuery
+  useGetAllTaxesQuery,
+  useUpdateBookMutation
 } from '../../../../services/api/books/BookiApi';
 import {
   errorMessage,
@@ -14,6 +15,7 @@ import { DropInput } from './DropInput';
 import { DropManyInputs } from './DropManyInputs';
 
 export const BookEditForm = ({ data }) => {
+  const [updateBook] = useUpdateBookMutation();
   // crud request
   const { data: authrosData, isLoading: loadAu } =
     useGetAllAuthorsQuery();
@@ -24,44 +26,49 @@ export const BookEditForm = ({ data }) => {
   const { data: taxesData, isLoading: loadTax } =
     useGetAllTaxesQuery();
   // variable declaration
-  const [authors, setAuthors] = useState(data.authors);
-  const [category, setCategory] = useState(data.categories);
-  const [discount, setDiscount] = useState(data.price_discount);
-  const [tax, setTax] = useState(data.price_tax);
-  const [title, setTitle] = useState({
+  const [authorsForm, setAuthorsForm] = useState(data.authors);
+  const [categoryForm, setCategoryForm] = useState(data.categories);
+  const [discountForm, setDiscountForm] = useState(
+    data.price_discount
+  );
+  const [taxForm, setTaxForm] = useState(data.price_tax);
+  const [titleForm, setTitleForm] = useState({
     field: data.title,
     err: null
   });
-  const [isbn, setIsbn] = useState({ field: data.isbn, err: null });
+  const [isbnForm, setIsbnForm] = useState({
+    field: data.isbn,
+    err: null
+  });
   const [editorial, setEditorial] = useState({
     field: data.editorial,
     err: null
   });
-  const [imgUrl, setImgUrl] = useState({
+  const [imgUrlForm, setImgUrlForm] = useState({
     field: data.imgUrl,
     err: null
   });
-  const [language, setLanguage] = useState({
+  const [languageForm, setLanguageForm] = useState({
     field: data.language,
     err: null
   });
-  const [price, setPrice] = useState({
+  const [priceForm, setPriceForm] = useState({
     field: data.price,
     err: null
   });
-  const [edition, setEdition] = useState({
+  const [editionForm, setEditionForm] = useState({
     field: data.edition,
     err: null
   });
-  const [pages, setPages] = useState({
+  const [pagesForm, setPagesForm] = useState({
     field: data.pages,
     err: null
   });
-  const [format, setFormat] = useState({
+  const [formatForm, setFormatForm] = useState({
     field: data.format,
     err: null
   });
-  const [details, setDetails] = useState(data.details);
+  const [detailsForm, setDetailsForm] = useState(data.details);
 
   //console.log({ title, category, discount, tax });
 
@@ -116,26 +123,28 @@ export const BookEditForm = ({ data }) => {
     //   console.log('error');
     // }
 
-    const authorsId = authors.map((a) => a.id);
-    const categoryId = category.map((c) => c.id);
+    const authorsId = authorsForm.map((a) => a.id);
+    const categoryId = categoryForm.map((c) => c.id);
     const book = {
-      title: title.field,
-      isbn: isbn.field,
-      price: Number(price.field),
-      imgUrl: imgUrl.field,
-      details: details,
-      language: language.field,
-      edition: edition.field,
+      id: data.id,
+      title: titleForm.field,
+      isbn: isbnForm.field,
+      price: Number(priceForm.field),
+      imgUrl: imgUrlForm.field,
+      details: detailsForm,
+      language: languageForm.field,
+      edition: editionForm.field,
       editorial: editorial.field,
-      pages: Number(pages.field),
-      format: format.field,
-      priceTaxId: tax.id,
-      priceDiscountId: discount.id,
+      pages: Number(pagesForm.field),
+      format: formatForm.field,
+      priceTaxId: taxForm.id,
+      priceDiscountId: discountForm.id,
       categoryIds: categoryId,
       authorIds: authorsId
     };
     // console.log('submit');
-    console.log(book);
+    // console.log(book);
+    updateBook(book);
   };
 
   return (
@@ -143,8 +152,8 @@ export const BookEditForm = ({ data }) => {
       <form onSubmit={handleSubmit}>
         <FormInputText
           id="title"
-          state={title}
-          setState={setTitle}
+          state={titleForm}
+          setState={setTitleForm}
           label="titulo del libro"
           variant="standard"
           size="small"
@@ -155,8 +164,8 @@ export const BookEditForm = ({ data }) => {
         <br />
         <FormInputText
           id="Isbn"
-          state={isbn}
-          setState={setIsbn}
+          state={isbnForm}
+          setState={setIsbnForm}
           label="ISBN del libro"
           variant="standard"
           size="small"
@@ -179,8 +188,8 @@ export const BookEditForm = ({ data }) => {
         <br />
         <FormInputText
           id="imgUrl"
-          state={imgUrl}
-          setState={setImgUrl}
+          state={imgUrlForm}
+          setState={setImgUrlForm}
           label="url del libro"
           txtError={errorMessage.img_url}
           reg={regularExpression.img_url}
@@ -190,32 +199,34 @@ export const BookEditForm = ({ data }) => {
         />
         <br />
         <div>
-          <h4>descripcion</h4>
           <textarea
             id="details"
-            value={details}
-            onChange={(e) => setDetails(e.target.value)}
+            value={detailsForm}
+            onChange={(e) => setDetailsForm(e.target.value)}
+            placeholder="descripcion del libro"
+            rows="6"
+            cols="45"
           />
         </div>
 
         <br />
         <FormInputText
           id="language"
-          state={language}
-          setState={setLanguage}
+          state={languageForm}
+          setState={setLanguageForm}
           label="Lenguaje del libro"
           variant="standard"
           size="small"
           txtError={errorMessage.lowercase}
-          reg={regularExpression.lowercase}
+          reg={regularExpression.lowerCase}
           req={true}
         />
 
         <br />
         <FormInputText
           id="price"
-          state={price}
-          setState={setPrice}
+          state={priceForm}
+          setState={setPriceForm}
           label="Precio del libro"
           variant="standard"
           size="small"
@@ -227,8 +238,8 @@ export const BookEditForm = ({ data }) => {
         <br />
         <FormInputText
           id="edition"
-          state={edition}
-          setState={setEdition}
+          state={editionForm}
+          setState={setEditionForm}
           label="Edición del libro"
           variant="standard"
           size="small"
@@ -240,8 +251,8 @@ export const BookEditForm = ({ data }) => {
         <br />
         <FormInputText
           id="pages"
-          state={pages}
-          setState={setPages}
+          state={pagesForm}
+          setState={setPagesForm}
           label="Paginas del libro"
           variant="standard"
           size="small"
@@ -253,43 +264,43 @@ export const BookEditForm = ({ data }) => {
         <br />
         <FormInputText
           id="format"
-          state={format}
-          setState={setFormat}
+          state={formatForm}
+          setState={setFormatForm}
           label="Formato del libro"
           variant="standard"
           size="small"
           txtError={errorMessage.lowercase}
-          reg={regularExpression.lowercase}
+          reg={regularExpression.lowerCase}
           req={true}
         />
         <DropManyInputs
-          state={authors}
+          state={authorsForm}
           label="Autores"
-          setState={setAuthors}
+          setState={setAuthorsForm}
           data={authrosData}
           loading={loadAu}
         />
 
         <DropManyInputs
-          state={category}
+          state={categoryForm}
           label="Categoria"
-          setState={setCategory}
+          setState={setCategoryForm}
           data={categoryData}
           loading={loadC}
         />
 
         <DropInput
-          state={discount}
+          state={discountForm}
           label="Descuento"
-          setState={setDiscount}
+          setState={setDiscountForm}
           data={discountData}
           loading={loadDisc}
         />
 
         <DropInput
-          state={tax}
+          state={taxForm}
           label="Impuesto"
-          setState={setTax}
+          setState={setTaxForm}
           data={taxesData}
           loading={loadTax}
         />

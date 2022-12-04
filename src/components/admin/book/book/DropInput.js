@@ -12,7 +12,6 @@ export const DropInput = ({
   data,
   loading
 }) => {
-  const handleChange = (event, value) => setState(value);
   // console.log(data);
   if (loading) return <CircularProgress />;
 
@@ -20,17 +19,17 @@ export const DropInput = ({
     <div>
       <Autocomplete
         id="prueba"
+        freeSolo={true}
         sx={{ width: 300 }}
         size="small"
         value={state}
-        onChange={handleChange}
+        onChange={(event, value) => setState(value)}
         isOptionEqualToValue={(option, value) =>
-          option.name === value.name
+          option.value === value.value
         }
-        getOptionLabel={(option) => option.name}
-        options={data}
+        getOptionLabel={(option) => (option.name ? option.name : '')}
+        options={data ? data : []}
         loading={loading}
-        // defaultValue={}
         renderInput={(params) => (
           <TextField
             {...params}

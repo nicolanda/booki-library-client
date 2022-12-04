@@ -16,13 +16,13 @@ export const CategoryPage = () => {
           onClick={() => setShowForm(!1)}
           className={styles.btn}>
           <RemoveCircleOutlineIcon />
-          Canelar nuevo Autor
+          Cancelar nueva Categoria
         </button>
         <button
           onClick={() => setShowForm(!0)}
           className={styles.btn}>
           <AddCircleOutlineIcon />
-          Agregar nuevo Autor
+          Agregar nuevo Categoria
         </button>
       </div>
       {showForm && <CategoryAddForm />}

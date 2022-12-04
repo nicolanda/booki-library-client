@@ -9,6 +9,15 @@ import { BookEditForm } from './BookEditForm';
 export const BooksItems = ({ data }) => {
   const [deleteBook] = useDeleteBookMutation();
   const [edit, setEdit] = React.useState(false);
+  const money = data.price.toLocaleString('es-CO', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+    style: 'currency',
+    currency: 'COP'
+  });
+  const discount = data.price_discount.value * 100;
+  const tax = data.price_tax.value * 100;
+  // console.log(data);
   return (
     <div>
       <div className={styles.itemContainer}>
@@ -22,10 +31,17 @@ export const BooksItems = ({ data }) => {
           </div>
         </div>
         <div>
-          <p>{data.title}</p>
+          <p>
+            <b>Titulo:</b> {data.title}
+          </p>
+          <p>Autores: </p>
           {data.authors.map((author) => {
             return <p key={author.id}>{author.name}</p>;
           })}
+          <p>precio: {money}</p>
+          <p>descuento: {discount} %</p>
+          <p>impuesto: {tax} %</p>
+          <p>formato: {data.format}</p>
         </div>
         <div>
           <IconButton

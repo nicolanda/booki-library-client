@@ -9,6 +9,11 @@ export const bookiApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: url
   }),
+  keepUnusedDataFor: 60,
+  refetchOnMountOrArgChange: true,
+  refetchOnFocus: true,
+  refetchOnReconnect: true,
+
   endpoints: (builder) => ({
     // !libros
     getAllBooks: builder.query({
@@ -24,7 +29,13 @@ export const bookiApi = createApi({
         method: 'POST',
         body: newBook
       }),
-      invalidatesTags: ['Books']
+      invalidatesTags: [
+        'Books',
+        'Author',
+        'Category',
+        'Tax',
+        'Discount'
+      ]
     }),
     updateBook: builder.mutation({
       query: (book) => ({
@@ -32,7 +43,13 @@ export const bookiApi = createApi({
         method: 'PUT',
         body: book
       }),
-      invalidatesTags: ['Books']
+      invalidatesTags: [
+        'Books',
+        'Author',
+        'Category',
+        'Tax',
+        'Discount'
+      ]
     }),
     deleteBook: builder.mutation({
       query: (id) => ({
