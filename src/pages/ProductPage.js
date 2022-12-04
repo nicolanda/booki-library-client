@@ -1,29 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Header } from '../components/header/Header';
 import { Footer } from '../components/footer/Footer';
-import { getInfoBook } from '../services/getAllBooks/getAllBooks';
 import styles from './ProductPage.module.css';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { politicies } from '../policies/data';
 import { ButtonAddToCart } from '../components/cart/ButtonAddCart';
 import { InputBar } from '../components/cart/InputBar.';
+import { useGetBookByIdQuery } from '../services/api/books/BookiApi';
 
-export const ProductPage = ({ infobook, addToCart }) => {
+export const ProductPage = ({ addToCart }) => {
   const [isActive, setIsActive] = useState(true);
   const [showPolicies, setShowPoliticies] = useState(false);
 
   const { id } = useParams();
-  // const [infoBook, setInfoBook] = useState([]);
-  // useEffect(() => {
-  //   getInfoBook(isbn).then((data) => {
-  //     setInfoBook(data);
-  //   });
-  // }, [isbn]);
-
-  let info = infobook.filter((book) => book.id === Number(id))[0];
-
+  const { data, isLoading, error, isUninitialized } =
+    useGetBookByIdQuery(id);
+  if (isLoading) return <p>Loading...</p>;
+  console.log(data);
+  if (error) return <p>Something went wrong: {error.message}</p>;
+  if (isUninitialized) return <p>Uninitialized</p>;
   const {
     title,
     isbn,
@@ -32,11 +29,11 @@ export const ProductPage = ({ infobook, addToCart }) => {
     imgUrl,
     details,
     language,
-    edicion,
-    paginas,
+    edition,
+    pages,
     format,
     authors
-  } = info;
+  } = data;
 
   const money = price.toLocaleString('es-CO', {
     minimumFractionDigits: 0,
@@ -114,11 +111,11 @@ export const ProductPage = ({ infobook, addToCart }) => {
                 </div>
                 <div className={styles.bookInfo}>
                   <h4>Edicion</h4>
-                  <p>{edicion}</p>
+                  <p>{edition}</p>
                 </div>
                 <div className={styles.bookInfo}>
                   <h4>Paginas</h4>
-                  <p>{paginas}</p>
+                  <p>{pages}</p>
                 </div>
               </div>
             </div>

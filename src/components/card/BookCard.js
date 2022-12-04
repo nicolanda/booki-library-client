@@ -13,7 +13,7 @@ export const BookCard = ({
   addToCart
 }) => {
   const money = price;
-
+  const author = authors[0].name;
   return (
     <div className={styles.cardContainer}>
       <div className={styles.cardImg}>
@@ -23,7 +23,7 @@ export const BookCard = ({
         <h4 className={styles.title}>{title}</h4>
         <div className={styles.propContainer}>
           <p className={styles.propText}>Autor:</p>
-          <p className={styles.bookAuthor}>{authors.name}</p>
+          <p className={styles.bookAuthor}>{author}</p>
         </div>
         <div className={styles.propContainer}>
           <p className={styles.propText}>formato: </p>

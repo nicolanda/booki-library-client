@@ -21,7 +21,7 @@ export const Home = ({ infobook, addToCart }) => {
           <div className={styles.title}>
             <h2>Libros recomendados</h2>
           </div>
-          <div className={styles.card}>
+          {/* <div className={styles.card}>
             <div className={styles.cards}>
               {infobook &&
                 uniquePositions(infobook, 3).map((book) => (
@@ -32,7 +32,7 @@ export const Home = ({ infobook, addToCart }) => {
                   />
                 ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <Footer />

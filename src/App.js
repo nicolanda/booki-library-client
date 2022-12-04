@@ -65,10 +65,7 @@ function App() {
           element={
             <Home infobook={products} addToCart={addToCart} />
           }></Route>
-        <Route
-          path="/categoria/libros"
-          element={<BooksPages infobook={products} />}
-        />
+        <Route path="/categoria/libros" element={<BooksPages />} />
         <Route
           path="/categoria/libros/:id"
           element={
