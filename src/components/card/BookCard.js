@@ -10,10 +10,23 @@ export const BookCard = ({
   price,
   imgUrl,
   format,
-  addToCart
+  isbn
 }) => {
   const money = price;
   const author = authors[0].name;
+
+  const data = {
+    id: id,
+    title: title,
+    authors: authors,
+    price: price,
+    imgUrl: imgUrl,
+    format: format,
+    isbn: isbn,
+    money: money,
+    author: author
+  };
+
   return (
     <div className={styles.cardContainer}>
       <div className={styles.cardImg}>
@@ -47,7 +60,8 @@ export const BookCard = ({
           address={`/categoria/libros/${id}`}
           type="menu"
         />
-        <ButtonAddToCart id={id} addToCart={addToCart} type="card" />
+        {/* addToCart={addToCart} */}
+        <ButtonAddToCart id={id} data={data} type="card" />
       </div>
     </div>
   );

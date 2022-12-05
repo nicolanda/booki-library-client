@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authorReducer from '../features/author/authorSlice';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { bookiApi } from '../services/api/books/BookiApi';
+import cartReducer from '../features/cartSlice';
 
 export const store = configureStore({
   reducer: {
-    authors: authorReducer,
+    cart: cartReducer,
     [bookiApi.reducerPath]: bookiApi.reducer
   },
 

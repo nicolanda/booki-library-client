@@ -1,23 +1,9 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  getAllAuthors,
-  selectAllAuthors
-} from '../../../../features/author/authorSlice';
-import authorServiceAxios from '../../../../services/api/books/authorServiceAxios';
-import { fetcherAuthor } from '../../../../services/api/books/authorsService';
-import { getidentificationType } from '../../../../services/api/register/indetificationType';
-import { CircularProgress, IconButton } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import { AuthorItemList } from './AuthorItemList';
 import { TableHead } from '../../tables/TableHead';
 import { useGetAllAuthorsQuery } from '../../../../services/api/books/BookiApi';
 
 export const AuthorList = () => {
-  // const dispatch = useDispatch();
-  // const allAuthors = useSelector(selectAllAuthors);
-  // const [showForm, setShowForm] = useState(null);
-  // const [axauthor, setAxAuthor] = useState([]);
   const { data: allAuthors, isLoading } = useGetAllAuthorsQuery();
   const columns = [
     { label: 'Nombre', field: 'name', sorteable: true },

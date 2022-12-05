@@ -10,15 +10,19 @@ import { ButtonAddToCart } from '../components/cart/ButtonAddCart';
 import { InputBar } from '../components/cart/InputBar.';
 import { useGetBookByIdQuery } from '../services/api/books/BookiApi';
 
-export const ProductPage = ({ addToCart }) => {
+export const ProductPage = () => {
   const [isActive, setIsActive] = useState(true);
   const [showPolicies, setShowPoliticies] = useState(false);
 
   const { id } = useParams();
-  const { data, isLoading, error, isUninitialized } =
-    useGetBookByIdQuery(id);
+  const {
+    data: bookData,
+    isLoading,
+    error,
+    isUninitialized
+  } = useGetBookByIdQuery(id);
   if (isLoading) return <p>Loading...</p>;
-  console.log(data);
+  console.log(bookData);
   if (error) return <p>Something went wrong: {error.message}</p>;
   if (isUninitialized) return <p>Uninitialized</p>;
   const {
@@ -33,7 +37,20 @@ export const ProductPage = ({ addToCart }) => {
     pages,
     format,
     authors
-  } = data;
+  } = bookData;
+
+  const author = authors[0].name;
+  const data = {
+    id: id,
+    title: title,
+    authors: authors,
+    price: price,
+    imgUrl: imgUrl,
+    format: format,
+    money: price,
+    author: author,
+    isbn: isbn
+  };
 
   const money = price.toLocaleString('es-CO', {
     minimumFractionDigits: 0,
@@ -79,12 +96,9 @@ export const ProductPage = ({ addToCart }) => {
                 <div className={styles.menuQuantity}>
                   <InputBar />
                 </div>
+                {/* addToCart={addToCart} */}
                 <div>
-                  <ButtonAddToCart
-                    addToCart={addToCart}
-                    id={id}
-                    type="cart"
-                  />
+                  <ButtonAddToCart id={id} data={data} type="cart" />
                 </div>
               </div>
             </div>

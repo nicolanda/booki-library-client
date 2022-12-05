@@ -22,7 +22,6 @@ import { useReducer } from 'react';
 import { BooksPages } from './pages/BooksPages';
 import { TYPES } from './actions/shoppingActions';
 import { AuthorsPage } from './pages/admin/AuthorsPage';
-import { AuthorList } from './components/admin/book/autores/AuthorList';
 import { CategoryPage } from './pages/admin/CategoryPage';
 import { TaxesPage } from './pages/admin/TaxesPage';
 import { DiscountPage } from './pages/admin/DiscounPage';
@@ -68,9 +67,7 @@ function App() {
         <Route path="/categoria/libros" element={<BooksPages />} />
         <Route
           path="/categoria/libros/:id"
-          element={
-            <ProductPage infobook={products} addToCart={addToCart} />
-          }
+          element={<ProductPage addToCart={addToCart} />}
         />
         <Route path="user" element="" />
         <Route path="user/login" element={<LoginPage />} />
@@ -88,13 +85,7 @@ function App() {
         </Route>
         <Route
           path="cart"
-          element={
-            <CartPage
-              infobook={products}
-              cart={cart}
-              actions={deleteFromCart}
-            />
-          }
+          element={<CartPage cart={cart} actions={deleteFromCart} />}
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

@@ -1,18 +1,21 @@
+import { useSelector } from 'react-redux';
 import { CardItem } from '../components/cart/CardItem';
 import { Footer } from '../components/footer/Footer';
 import { Header } from '../components/header/Header';
-import { ImproveCount } from '../components/reducerComp/ImproveCount';
+import { ImproveCount } from '../components/reducerCompEliminar/ImproveCount';
 import styles from './CartPage.module.css';
 
-export const CartPage = ({ cart, deleteFromCart }) => {
+export const CartPage = ({ deleteFromCart }) => {
+  const cart = useSelector((state) => state.cart.cartItems);
+  console.log(cart);
   return (
     <div>
       <Header />
       <div className={styles.storeContainer}>
         <div className={styles.itemContainer}>
-          {cart.map((item, idx) => (
+          {cart.map((item) => (
             <CardItem
-              key={idx}
+              key={item.id}
               data={item}
               deleteFromCart={deleteFromCart}
             />

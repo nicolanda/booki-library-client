@@ -1,15 +1,18 @@
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../features/cartSlice';
 import styles from './ButtonAddCart.module.css';
-export const ButtonAddToCart = ({ type, addToCart, id }) => {
+export const ButtonAddToCart = ({ type, id, data }) => {
   const chooseType = {
     card: styles.cardButton,
     cart: styles.cartButton
   };
 
-  const handleClick = (e) => {
-    e.preventDefault();
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
     console.log('add item: ' + id);
-    addToCart(id);
+    dispatch(addToCart(data));
   };
 
   return (
