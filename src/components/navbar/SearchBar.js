@@ -3,7 +3,11 @@ import { Link, Link as RouterLink } from 'react-router-dom';
 import { IconButton, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useSelector } from 'react-redux';
 export const SearchBar = () => {
+  const cart = useSelector((state) => state.cart);
+  const cartItems = cart.cartItems.length;
+  console.log(cartItems);
   return (
     <div className={styles.searchBar}>
       <div className={styles.btnBooki}>
@@ -32,7 +36,7 @@ export const SearchBar = () => {
         </Link>
         <div className={styles.kartSeparator} />
         <div className={styles.kartText}>
-          <p>00</p>
+          <p>{cartItems}</p>
         </div>
       </div>
     </div>

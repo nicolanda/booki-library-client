@@ -13,8 +13,28 @@ export const bookiApi = createApi({
   refetchOnMountOrArgChange: true,
   refetchOnFocus: true,
   refetchOnReconnect: true,
-
   endpoints: (builder) => ({
+    //!!usuario
+    // ? usuarios
+    createUser: builder.mutation({
+      query: (newUser) => ({
+        url: '/lead',
+        method: 'POST',
+        body: newUser
+      })
+    }),
+    loginUser: builder.mutation({
+      query: (user) => ({
+        url: '/login',
+        method: 'POST',
+        body: user
+      })
+    }),
+    // ? componentes del usuario
+    getAllIdentificationsTypes: builder.query({
+      query: () => '/identificationType',
+      providesTags: ['IdentificationType']
+    }),
     // !libros
     getAllBooks: builder.query({
       query: () => '/book',
@@ -176,6 +196,9 @@ export const bookiApi = createApi({
 });
 
 export const {
+  useCreateUserMutation,
+  useLoginUserMutation,
+  useGetAllIdentificationsTypesQuery,
   useGetAllBooksQuery,
   useGetBookByIdQuery,
   useCreateBookMutation,

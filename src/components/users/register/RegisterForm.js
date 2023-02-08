@@ -4,8 +4,19 @@ import { FormInputText } from '../../forms/FormInputText';
 import React, { useState } from 'react';
 import { FormSelectDocumentType } from '../../forms/FormSelectDocumentType';
 import styles from './RegisterForm.module.css';
+import {
+  errorMessage,
+  regularExpression
+} from '../../../utilities/validators';
+import {
+  useCreateUserMutation,
+  useGetAllIdentificationsTypesQuery
+} from '../../../services/api/books/BookiApi';
 
 export const RegisterForm = () => {
+  /* importe de peiticon */
+  const [createUser] = useCreateUserMutation();
+  /* estados de los campos */
   const [name, setName] = useState({ field: '', err: null });
   const [email, setEmail] = useState({ field: '', err: null });
   const [password, setPassword] = useState({
@@ -20,32 +31,13 @@ export const RegisterForm = () => {
     field: '',
     err: null
   });
-
   const [documentType, setDocumentType] = useState('');
-
   const [numDocument, setNumDocument] = useState({
     field: '',
     err: null
   });
 
-  const regularExpression = {
-    name: /^[a-zA-ZÀ-ÿ\s]{4,40}$/,
-    password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,15}$/,
-    email: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-    cellphone: /^\d{9,10}$/,
-    numDocument: /^\d{6,10}$/
-  };
-
-  const errorMessage = {
-    name: 'El nombre debe tener entre 4 y 40 letras',
-    email: 'El email no es válido',
-    password:
-      'La contraseña deben contener entre 6 15 caracteres, una mayúscula y un número',
-    password2: 'Las contraseñas no coinciden',
-    cellphone: 'El número de celular no es válido',
-    numDocument: 'El número de documento no es válido'
-  };
-
+  /* verificacion de las contraseñas */
   const confirmPass = () => {
     if (password.field.length > 0) {
       if (password.field !== password2.field) {
@@ -60,24 +52,12 @@ export const RegisterForm = () => {
     }
   };
 
-  /*
-   ? Insertar la peticion por api de datos
-  */
-
-  const example = [
-    {
-      id: 1,
-      name: 'Juan'
-    },
-    {
-      id: 2,
-      name: 'Pedro'
-    },
-    {
-      id: 3,
-      name: 'Maria'
-    }
-  ];
+  const {
+    data: documenType,
+    isLoading,
+    isUninitialized,
+    isError
+  } = useGetAllIdentificationsTypesQuery();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,12 +66,21 @@ export const RegisterForm = () => {
       password: password.field,
       email: email.field,
       cellphone: cellphone.field,
-      documentType: documentType,
-      numDocument: numDocument.field
+      // identificationTypeId: documentType,
+      identificationNum: numDocument.field
+    });
+
+    createUser({
+      name: name.field,
+      password: password.field,
+      email: email.field,
+      cellphone: cellphone.field,
+      identificationTypeId: documentType,
+      identificationNum: numDocument.field
     });
   };
 
-  console.log(documentType);
+  // console.log(documentType);
   return (
     <div className={styles.containerForm}>
       <div className={styles.titleForm}>
@@ -169,14 +158,18 @@ export const RegisterForm = () => {
           req={!0}
         />
 
-        <FormSelectDocumentType
-          state={documentType}
-          setState={setDocumentType}
-          id="documentType"
-          label="Tipo de documento"
-          data={example}
-          req={!0}
-        />
+        {isUninitialized || isLoading || isError ? (
+          <p>Cargando...</p>
+        ) : (
+          <FormSelectDocumentType
+            state={documentType}
+            setState={setDocumentType}
+            id="documentType"
+            label="Tipo de documento"
+            data={documenType}
+            req={!0}
+          />
+        )}
 
         <FormInputText
           state={numDocument}

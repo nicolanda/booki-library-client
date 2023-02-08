@@ -39,19 +39,6 @@ export const ProductPage = () => {
     authors
   } = bookData;
 
-  const author = authors[0].name;
-  const data = {
-    id: id,
-    title: title,
-    authors: authors,
-    price: price,
-    imgUrl: imgUrl,
-    format: format,
-    money: price,
-    author: author,
-    isbn: isbn
-  };
-
   const money = price.toLocaleString('es-CO', {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
@@ -93,12 +80,15 @@ export const ProductPage = () => {
                 </div>
               </div>
               <div className={styles.menuOrder}>
-                <div className={styles.menuQuantity}>
+                {/* <div className={styles.menuQuantity}>
                   <InputBar />
-                </div>
-                {/* addToCart={addToCart} */}
+                </div> */}
                 <div>
-                  <ButtonAddToCart id={id} data={data} type="cart" />
+                  <ButtonAddToCart
+                    id={id}
+                    data={bookData}
+                    type="cart"
+                  />
                 </div>
               </div>
             </div>

@@ -3,16 +3,33 @@ import styles from './CardItem.module.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { InputBar } from './InputBar.';
 import { IconButton } from '@mui/material';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { removeFromCart } from '../../features/cartSlice';
 
 export const CardItem = ({ data }) => {
   // const example = booksData[0];
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const { title, isbn, imgUrl, price, authors, itemQuantity } = data;
 
-  const { title, isbn, imgUrl, price, authors, quantity } = data;
-  const money = price;
+  const money = price.toLocaleString('es-CO', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+    style: 'currency',
+    currency: 'COP'
+  });
 
+  const total_money = (price * itemQuantity).toLocaleString('es-CO', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+    style: 'currency',
+    currency: 'COP'
+  });
   const name = authors[0].name;
+
+  const handleRemoveFromCart = (product) => {
+    console.log('remove from cart', product);
+    dispatch(removeFromCart(product));
+  };
 
   return (
     <div className={styles.itemContainer}>
@@ -30,14 +47,13 @@ export const CardItem = ({ data }) => {
         <div>
           <div>
             <h4 className={styles.title}>Unit.</h4>
-            <p>{quantity}</p>
           </div>
           <div>
             <p>{money}</p>
           </div>
         </div>
         <div>
-          <InputBar />
+          <InputBar data={data} />
         </div>
       </div>
       <div className={styles.totalContainer}>
@@ -45,18 +61,13 @@ export const CardItem = ({ data }) => {
           <h4 className={styles.title}>Total</h4>
         </div>
         <div>
-          <p>
-            {money.toLocaleString('es-CO', {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-              style: 'currency',
-              currency: 'COP'
-            })}
-          </p>
+          <p>{total_money}</p>
         </div>
       </div>
       <div className={styles.btnContainer}>
-        <IconButton className={styles.deleteButton}>
+        <IconButton
+          className={styles.deleteButton}
+          onClick={() => handleRemoveFromCart(data)}>
           <DeleteIcon fontSize="medium" />
         </IconButton>
       </div>

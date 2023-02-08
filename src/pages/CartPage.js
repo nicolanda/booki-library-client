@@ -5,19 +5,20 @@ import { Header } from '../components/header/Header';
 import { ImproveCount } from '../components/reducerCompEliminar/ImproveCount';
 import styles from './CartPage.module.css';
 
-export const CartPage = ({ deleteFromCart }) => {
-  const cart = useSelector((state) => state.cart.cartItems);
+export const CartPage = () => {
+  const cart = useSelector((state) => state.cart);
   console.log(cart);
+
   return (
     <div>
       <Header />
       <div className={styles.storeContainer}>
         <div className={styles.itemContainer}>
-          {cart.map((item) => (
+          {cart.cartItems.map((item) => (
             <CardItem
               key={item.id}
               data={item}
-              deleteFromCart={deleteFromCart}
+              // deleteFromCart={deleteFromCart}
             />
           ))}
         </div>

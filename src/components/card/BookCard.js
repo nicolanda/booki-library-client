@@ -3,29 +3,10 @@ import React from 'react';
 import { NavButton } from '../buttons/NavButton';
 import { ButtonAddToCart } from '../cart/ButtonAddCart';
 
-export const BookCard = ({
-  id,
-  title,
-  authors,
-  price,
-  imgUrl,
-  format,
-  isbn
-}) => {
+export const BookCard = (book) => {
+  const { id, title, authors, price, imgUrl, format } = book;
   const money = price;
   const author = authors[0].name;
-
-  const data = {
-    id: id,
-    title: title,
-    authors: authors,
-    price: price,
-    imgUrl: imgUrl,
-    format: format,
-    isbn: isbn,
-    money: money,
-    author: author
-  };
 
   return (
     <div className={styles.cardContainer}>
@@ -61,7 +42,7 @@ export const BookCard = ({
           type="menu"
         />
         {/* addToCart={addToCart} */}
-        <ButtonAddToCart id={id} data={data} type="card" />
+        <ButtonAddToCart id={id} data={book} type="card" />
       </div>
     </div>
   );

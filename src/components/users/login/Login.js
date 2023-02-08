@@ -1,21 +1,38 @@
-import { style } from '@mui/system';
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useLoginUserMutation } from '../../../services/api/books/BookiApi';
 import { RegisterButton } from '../../buttons/RegisterButton';
 import { FormInputText } from '../../forms/FormInputText';
 import styles from './Login.module.css';
-/*
-! realizar el manejo de errores
-! realizar peticiones a la api
-*/
+import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
+
 export const Login = () => {
   const [email, setEmail] = useState({ field: '', err: null });
   const [password, setpassword] = useState({ field: '', err: null });
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [
+    loginUser,
+    { data: logindata, isSuccess: isLoginSucces, isError, error }
+  ] = useLoginUserMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+    loginUser({
+      email: email.field,
+      password: password.field
+    });
   };
+
+  useEffect(() => {
+    if (isLoginSucces) {
+      console.log(logindata);
+      Cookies.set('token', logindata.token);
+    }
+  }, [isLoginSucces]);
+
   return (
     <div className={styles.container}>
       <div>
